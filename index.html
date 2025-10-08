@@ -1,0 +1,2330 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Charcutaria Artesanal - Produtos Selecionados</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        :root {
+            --primary: #8B0000; /* Vermelho escuro */
+            --secondary: #A52A2A; /* Marrom avermelhado */
+            --accent: #FF6B6B; /* Vermelho vivo */
+            --dark: #2C1810; /* Marrom muito escuro */
+            --light: #FFF5F5; /* Branco com toque de vermelho */
+            --gray: #F8E6E6; /* Cinza com toque de vermelho */
+            --success: #4CAF50;
+            --danger: #F44336;
+        }
+        
+        body {
+            background-color: #FFF9F9;
+            background-image: url('https://iili.io/K0t26rP.webp');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: var(--dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+        
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(255, 249, 249, 0.85);
+            z-index: -1;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        header {
+            background-color: white;
+            box-shadow: 0 4px 20px rgba(139, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(10px);
+            background-color: rgba(255, 255, 255, 0.95);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            font-size: 26px;
+            font-weight: 700;
+            color: var(--primary);
+            letter-spacing: -0.5px;
+        }
+        
+        .logo i {
+            margin-right: 12px;
+            font-size: 30px;
+            color: var(--accent);
+        }
+        
+        .cart-icon {
+            position: relative;
+            cursor: pointer;
+            font-size: 24px;
+            color: var(--primary);
+            transition: transform 0.3s;
+        }
+        
+        .cart-icon:hover {
+            transform: scale(1.1);
+        }
+        
+        /* Animação de pulso no carrinho */
+        .cart-icon:hover i {
+            animation: pulse 1.5s infinite;
+        }
+        
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.2);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+        
+        /* Animação de balanço quando item é adicionado */
+        .cart-icon.shake i {
+            animation: shake 0.5s ease-in-out;
+        }
+        
+        @keyframes shake {
+            0%, 100% {
+                transform: rotate(0deg);
+            }
+            25% {
+                transform: rotate(-15deg);
+            }
+            75% {
+                transform: rotate(15deg);
+            }
+        }
+        
+        .cart-count {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background-color: var(--accent);
+            color: white;
+            border-radius: 50%;
+            width: 22px;
+            height: 22px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: bold;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+        
+        /* Animação na contagem do carrinho */
+        .cart-count.bounce {
+            animation: bounce 0.5s ease-in-out;
+        }
+        
+        @keyframes bounce {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.3);
+            }
+        }
+        
+        .categories-bar {
+            background-color: var(--primary);
+            padding: 0;
+            position: sticky;
+            top: 80px;
+            z-index: 90;
+            box-shadow: 0 4px 15px rgba(139, 0, 0, 0.2);
+        }
+        
+        .categories-container {
+            display: flex;
+            overflow-x: auto;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+            padding: 0 15px;
+        }
+        
+        .categories-container::-webkit-scrollbar {
+            display: none;
+        }
+        
+        .category-item {
+            padding: 18px 25px;
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+            white-space: nowrap;
+            transition: all 0.3s;
+            position: relative;
+            font-size: 15px;
+        }
+        
+        .category-item::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background-color: var(--accent);
+            transition: width 0.3s;
+        }
+        
+        .category-item:hover, .category-item.active {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+        
+        .category-item.active::after {
+            width: 100%;
+        }
+        
+        .banner {
+            position: relative;
+            height: 550px;
+            overflow: hidden;
+            margin-top: 80px;
+        }
+        
+        .slider {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        
+        .slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 1.5s ease-in-out;
+            background-size: cover;
+            background-position: center;
+            /* Adicionado para melhorar a nitidez das imagens */
+            image-rendering: -webkit-optimize-contrast;
+            image-rendering: crisp-edges;
+        }
+        
+        .slide.active {
+            opacity: 1;
+        }
+        
+        .slide-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            /* Alterado o gradiente para ser mais sutil e não atrapalhar a imagem */
+            background: linear-gradient(135deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.2));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            color: white;
+            text-align: center;
+            padding: 0 20px;
+        }
+        
+        .banner h1 {
+            font-size: 3.5rem;
+            margin-bottom: 25px;
+            z-index: 2;
+            font-weight: 800;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            letter-spacing: -1px;
+        }
+        
+        .banner p {
+            font-size: 1.3rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+            z-index: 2;
+            font-weight: 300;
+            line-height: 1.6;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+        }
+        
+        .scroll-to-products {
+            background-color: var(--accent);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 30px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(255, 107, 107, 0.4);
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            z-index: 2;
+        }
+        
+        .scroll-to-products:hover {
+            background-color: var(--primary);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(255, 107, 107, 0.5);
+        }
+        
+        .scroll-to-products i {
+            font-size: 1.2rem;
+        }
+        
+        .slider-nav {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 12px;
+            z-index: 3;
+        }
+        
+        .slider-dot {
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background-color: rgba(255,255,255,0.5);
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .slider-dot.active {
+            background-color: white;
+            transform: scale(1.2);
+        }
+        
+        .products {
+            padding: 60px 0;
+            background-color: white;
+            background-image: url('https://iili.io/K0tl4Db.jpg');
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+        
+        .products::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(255, 255, 255, 0.92);
+            z-index: 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            font-size: 2.5rem;
+            color: var(--primary);
+            font-weight: 700;
+            position: relative;
+            display: inline-block;
+            width: 100%;
+            z-index: 1;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--accent);
+            border-radius: 2px;
+        }
+        
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .product-card {
+            background-color: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(139, 0, 0, 0.08);
+            transition: all 0.4s;
+            border: 1px solid rgba(139, 0, 0, 0.05);
+        }
+        
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(139, 0, 0, 0.15);
+        }
+        
+        .product-img {
+            height: 220px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .product-img::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(255,255,255,0), rgba(139, 0, 0, 0.1));
+            z-index: 1;
+        }
+        
+        .product-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.7s;
+            /* Adicionado para melhorar a nitidez das imagens */
+            image-rendering: -webkit-optimize-contrast;
+            image-rendering: crisp-edges;
+        }
+        
+        .product-card:hover .product-img img {
+            transform: scale(1.08);
+        }
+        
+        .product-info {
+            padding: 25px;
+        }
+        
+        .product-name {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: var(--dark);
+        }
+        
+        .product-description {
+            color: #666;
+            font-size: 0.95rem;
+            margin-bottom: 20px;
+            line-height: 1.5;
+        }
+        
+        .product-price {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--primary);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .product-price::before {
+            content: 'R$';
+            font-size: 1rem;
+            margin-right: 4px;
+            font-weight: 400;
+        }
+        
+        .product-actions {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 15px;
+        }
+        
+        .quantity-control {
+            display: flex;
+            align-items: center;
+            border: 2px solid #eee;
+            border-radius: 30px;
+            overflow: hidden;
+            background-color: #f9f9f9;
+        }
+        
+        .quantity-btn {
+            background: none;
+            border: none;
+            width: 40px;
+            height: 40px;
+            font-size: 18px;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .quantity-btn:hover {
+            background-color: var(--gray);
+        }
+        
+        .quantity-input {
+            width: 50px;
+            text-align: center;
+            border: none;
+            font-weight: 700;
+            font-size: 16px;
+            background: transparent;
+        }
+        
+        .add-to-cart {
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: 700;
+            transition: all 0.3s;
+            font-size: 15px;
+            letter-spacing: 0.5px;
+            box-shadow: 0 4px 15px rgba(139, 0, 0, 0.2);
+        }
+        
+        .add-to-cart:hover {
+            background-color: var(--accent);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(139, 0, 0, 0.3);
+        }
+        
+        .finish-order {
+            background-color: var(--success);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: 700;
+            transition: all 0.3s;
+            font-size: 15px;
+            letter-spacing: 0.5px;
+            box-shadow: 0 4px 15px rgba(76, 175, 80, 0.3);
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+        
+        .finish-order:hover {
+            background-color: #3d8b40;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(76, 175, 80, 0.4);
+        }
+        
+        .cart-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s;
+            backdrop-filter: blur(5px);
+        }
+        
+        .cart-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .cart {
+            background-color: white;
+            width: 90%;
+            max-width: 550px;
+            max-height: 85vh;
+            border-radius: 20px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            transform: scale(0.9);
+            transition: transform 0.3s;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+        }
+        
+        .cart-overlay.active .cart {
+            transform: scale(1);
+        }
+        
+        .cart-header {
+            background-color: var(--primary);
+            color: white;
+            padding: 20px 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .cart-title {
+            font-size: 1.6rem;
+            font-weight: 700;
+        }
+        
+        .close-cart {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 26px;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+        
+        .close-cart:hover {
+            transform: rotate(90deg);
+        }
+        
+        .cart-items {
+            padding: 25px;
+            overflow-y: auto;
+            max-height: 50vh;
+        }
+        
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #eee;
+            margin-bottom: 20px;
+        }
+        
+        .cart-item-info {
+            flex-grow: 1;
+        }
+        
+        .cart-item-name {
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: var(--dark);
+        }
+        
+        .cart-item-price {
+            color: var(--primary);
+            font-weight: 600;
+        }
+        
+        .cart-item-quantity {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .cart-footer {
+            padding: 25px;
+            border-top: 1px solid #eee;
+            background-color: #f9f9f9;
+        }
+        
+        .cart-total {
+            display: flex;
+            justify-content: space-between;
+            font-size: 1.4rem;
+            font-weight: 800;
+            margin-bottom: 25px;
+            color: var(--dark);
+        }
+        
+        .cart-actions {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .checkout-btn, .clear-cart-btn {
+            flex: 1;
+            padding: 15px;
+            border: none;
+            border-radius: 30px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 16px;
+        }
+        
+        .checkout-btn {
+            background-color: var(--success);
+            color: white;
+            box-shadow: 0 4px 15px rgba(76, 175, 80, 0.3);
+        }
+        
+        .checkout-btn:hover {
+            background-color: #3d8b40;
+            transform: translateY(-2px);
+        }
+        
+        .clear-cart-btn {
+            background-color: var(--danger);
+            color: white;
+            box-shadow: 0 4px 15px rgba(244, 67, 54, 0.3);
+        }
+        
+        .clear-cart-btn:hover {
+            background-color: #d32f2f;
+            transform: translateY(-2px);
+        }
+        
+        .checkout-form {
+            padding: 25px;
+            display: none;
+            flex-direction: column;
+            overflow-y: auto;
+            max-height: 70vh;
+        }
+        
+        .checkout-form.active {
+            display: flex;
+        }
+        
+        .form-group {
+            margin-bottom: 25px;
+        }
+        
+        .form-label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: 700;
+            color: var(--dark);
+        }
+        
+        .form-input {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #eee;
+            border-radius: 10px;
+            font-size: 16px;
+            transition: all 0.3s;
+        }
+        
+        .form-input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(139, 0, 0, 0.1);
+        }
+        
+        .form-textarea {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #eee;
+            border-radius: 10px;
+            font-size: 16px;
+            transition: all 0.3s;
+            resize: vertical;
+            min-height: 100px;
+            font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        .form-textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(139, 0, 0, 0.1);
+        }
+        
+        .payment-options {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 10px;
+        }
+        
+        .payment-option {
+            flex: 1;
+            min-width: 120px;
+            position: relative;
+        }
+        
+        .payment-option input[type="radio"] {
+            position: absolute;
+            opacity: 0;
+        }
+        
+        .payment-option label {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 15px;
+            border: 2px solid #eee;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 600;
+            text-align: center;
+        }
+        
+        .payment-option input[type="radio"]:checked + label {
+            border-color: var(--primary);
+            background-color: rgba(139, 0, 0, 0.05);
+        }
+        
+        .payment-option label:hover {
+            border-color: var(--accent);
+        }
+        
+        .payment-option i {
+            margin-right: 8px;
+            font-size: 18px;
+        }
+        
+        .submit-order {
+            background-color: var(--secondary);
+            color: white;
+            border: none;
+            padding: 18px;
+            width: 100%;
+            border-radius: 30px;
+            font-size: 1.1rem;
+            font-weight: 800;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(165, 42, 42, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-top: auto;
+            position: relative;
+            z-index: 10;
+        }
+        
+        .submit-order:hover {
+            background-color: var(--primary);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(165, 42, 42, 0.4);
+        }
+        
+        .back-to-cart {
+            background-color: #777;
+            color: white;
+            border: none;
+            padding: 12px;
+            border-radius: 30px;
+            font-weight: 700;
+            cursor: pointer;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+        
+        .back-to-cart:hover {
+            background-color: #555;
+        }
+        
+        /* Estilos para a barra de rolagem */
+        .cart-items::-webkit-scrollbar,
+        .checkout-form::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        .cart-items::-webkit-scrollbar-track,
+        .checkout-form::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 10px;
+        }
+        
+        .cart-items::-webkit-scrollbar-thumb,
+        .checkout-form::-webkit-scrollbar-thumb {
+            background: var(--primary);
+            border-radius: 10px;
+        }
+        
+        .cart-items::-webkit-scrollbar-thumb:hover,
+        .checkout-form::-webkit-scrollbar-thumb:hover {
+            background: var(--secondary);
+        }
+        
+        .notification {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: var(--success);
+            color: white;
+            padding: 15px 25px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            transform: translateY(100px);
+            opacity: 0;
+            transition: all 0.3s;
+            z-index: 2000;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .notification.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        
+        .notification i {
+            font-size: 20px;
+        }
+        
+        /* Rodapé */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 60px 0 30px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .footer-content {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .footer-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('https://images.unsplash.com/photo-1607305387299-a3d9611cd469?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.2;
+            z-index: 1;
+        }
+        
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-section h3 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: var(--accent);
+            position: relative;
+        }
+        
+        .footer-section h3::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background-color: var(--accent);
+        }
+        
+        .footer-section p, .footer-section li {
+            margin-bottom: 10px;
+            line-height: 1.6;
+        }
+        
+        .footer-section ul {
+            list-style: none;
+        }
+        
+        .footer-section a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-section a:hover {
+            color: var(--accent);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            transition: all 0.3s;
+        }
+        
+        .social-links a:hover {
+            background-color: var(--accent);
+            transform: translateY(-3px);
+        }
+        
+        .work-with-us {
+            background-color: var(--accent);
+            color: white;
+            padding: 15px 30px;
+            border-radius: 30px;
+            font-weight: 700;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s;
+            margin-top: 20px;
+            box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3);
+        }
+        
+        .work-with-us:hover {
+            background-color: var(--primary);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(255, 107, 107, 0.4);
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+        }
+        
+        /* Responsividade */
+        @media (max-width: 992px) {
+            .banner h1 {
+                font-size: 2.8rem;
+            }
+            
+            .banner p {
+                font-size: 1.1rem;
+            }
+            
+            .product-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+                gap: 20px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .header-content {
+                padding: 10px 0;
+            }
+            
+            .logo {
+                font-size: 22px;
+            }
+            
+            .logo i {
+                font-size: 26px;
+            }
+            
+            .categories-bar {
+                top: 70px;
+            }
+            
+            .banner {
+                height: 450px;
+                margin-top: 70px;
+            }
+            
+            .banner h1 {
+                font-size: 2.2rem;
+            }
+            
+            .banner p {
+                font-size: 1rem;
+            }
+            
+            .scroll-to-products {
+                padding: 12px 24px;
+                font-size: 1rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .product-grid {
+                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+                gap: 15px;
+            }
+            
+            .product-info {
+                padding: 15px;
+            }
+            
+            .product-name {
+                font-size: 1.1rem;
+            }
+            
+            .product-price {
+                font-size: 1.3rem;
+            }
+            
+            .cart {
+                width: 95%;
+                max-height: 90vh;
+            }
+            
+            .cart-title {
+                font-size: 1.4rem;
+            }
+            
+            .cart-total {
+                font-size: 1.2rem;
+            }
+            
+            .payment-options {
+                flex-direction: column;
+            }
+            
+            .payment-option {
+                min-width: 100%;
+            }
+            
+            .notification {
+                bottom: 20px;
+                right: 20px;
+                left: 20px;
+                padding: 12px 20px;
+            }
+            
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .logo {
+                font-size: 18px;
+            }
+            
+            .logo i {
+                font-size: 22px;
+            }
+            
+            .banner {
+                height: 380px;
+            }
+            
+            .banner h1 {
+                font-size: 1.8rem;
+            }
+            
+            .banner p {
+                font-size: 0.9rem;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .product-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .product-actions {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .quantity-control {
+                width: 100%;
+                justify-content: center;
+            }
+            
+            .add-to-cart {
+                width: 100%;
+            }
+            
+            .cart-actions {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-drumstick-bite"></i>
+                    Charcutaria Artesanal
+                </div>
+                <div class="cart-icon">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-count">0</span>
+                </div>
+            </div>
+        </div>
+    </header>
+    
+    <div class="categories-bar">
+        <div class="container">
+            <div class="categories-container">
+                <div class="category-item active" data-category="todos">Todos</div>
+                <div class="category-item" data-category="salames">Salames</div>
+                <div class="category-item" data-category="linguicas">Linguiças</div>
+                <div class="category-item" data-category="presuntos">Presuntos</div>
+                <div class="category-item" data-category="queijos">Queijos</div>
+                <div class="category-item" data-category="acomp">Acompanhamentos</div>
+                <div class="category-item" data-category="kits">Kits</div>
+            </div>
+        </div>
+    </div>
+    
+    <section class="banner">
+        <div class="slider">
+            <!-- Imagens de alta qualidade para o slide -->
+            <div class="slide active" style="background-image: url('https://iili.io/K0th1fa.webp')">
+                <div class="slide-overlay">
+                    <h1>Sabores Artesanais</h1>
+                    <p>Descubra nossa seleção exclusiva de produtos artesanais, preparados com ingredientes selecionados e técnicas tradicionais.</p>
+                    <button class="scroll-to-products">
+                        Ver Produtos <i class="fas fa-arrow-down"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="slide" style="background-image: url('https://i.postimg.cc/fW6ss2Vt/202592613222376-png.webp')">
+                <div class="slide-overlay">
+                    <h1>Qualidade Premium</h1>
+                    <p>Cada produto é cuidadosamente elaborado para proporcionar uma experiência gastronômica única e inesquecível.</p>
+                    <button class="scroll-to-products">
+                        Ver Produtos <i class="fas fa-arrow-down"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="slide" style="background-image: url('https://iili.io/K0tl4Db.jpg')">
+                <div class="slide-overlay">
+                    <h1>Tradição e Sabor</h1>
+                    <p>Receitas de família aprimoradas ao longo de gerações, trazendo autenticidade e sabor para sua mesa.</p>
+                    <button class="scroll-to-products">
+                        Ver Produtos <i class="fas fa-arrow-down"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="slider-nav">
+            <div class="slider-dot active" data-slide="0"></div>
+            <div class="slider-dot" data-slide="1"></div>
+            <div class="slider-dot" data-slide="2"></div>
+        </div>
+    </section>
+    
+    <section class="products" id="products">
+        <div class="container">
+            <h2 class="section-title">Nossos Produtos</h2>
+            
+            <!-- Categoria Salames -->
+            <div id="salames" class="category-section">
+                <h3 class="section-title" style="font-size: 2rem; margin-top: 40px;">Salames</h3>
+                <div class="product-grid">
+                    <div class="product-card" data-category="salames">
+                        <div class="product-img">
+                            <img src="https://images.unsplash.com/photo-1610367485454-2e68f3643b5e?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Salame Italiano">
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-name">Salame Italiano Artesanal</h3>
+                            <p class="product-description">Salame tradicional italiano, preparado com carnes selecionadas e especiarias importadas. Maturado por 90 dias.</p>
+                            <div class="product-price">89,90</div>
+                            <div class="product-actions">
+                                <div class="quantity-control">
+                                    <button class="quantity-btn minus">-</button>
+                                    <input type="text" class="quantity-input" value="1" readonly>
+                                    <button class="quantity-btn plus">+</button>
+                                </div>
+                                <button class="add-to-cart">Adicionar</button>
+                            </div>
+                            <button class="finish-order">
+                                <i class="fas fa-shopping-cart"></i> Finalizar Pedido
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="product-card" data-category="salames">
+                        <div class="product-img">
+                            <img src="https://images.unsplash.com/photo-1550989460-0adf9ea622e2?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Copacabana">
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-name">Copacabana Especial</h3>
+                            <p class="product-description">Salame brasileiro com toques de pimenta e especiarias. Ideal para quem aprecia sabores mais intensos.</p>
+                            <div class="product-price">69,90</div>
+                            <div class="product-actions">
+                                <div class="quantity-control">
+                                    <button class="quantity-btn minus">-</button>
+                                    <input type="text" class="quantity-input" value="1" readonly>
+                                    <button class="quantity-btn plus">+</button>
+                                </div>
+                                <button class="add-to-cart">Adicionar</button>
+                            </div>
+                            <button class="finish-order">
+                                <i class="fas fa-shopping-cart"></i> Finalizar Pedido
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="product-card" data-category="salames">
+                        <div class="product-img">
+                            <img src="https://images.unsplash.com/photo-1610367485454-2e68f3643b5e?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Salame Milano">
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-name">Salame Milano Tradicional</h3>
+                            <p class="product-description">Clássico salame italiano com grãos de pimenta. Textura macia e sabor equilibrado.</p>
+                            <div class="product-price">94,90</div>
+                            <div class="product-actions">
+                                <div class="quantity-control">
+                                    <button class="quantity-btn minus">-</button>
+                                    <input type="text" class="quantity-input" value="1" readonly>
+                                    <button class="quantity-btn plus">+</button>
+                                </div>
+                                <button class="add-to-cart">Adicionar</button>
+                            </div>
+                            <button class="finish-order">
+                                <i class="fas fa-shopping-cart"></i> Finalizar Pedido
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="product-card" data-category="salames">
+                        <div class="product-img">
+                            <img src="https://postimg.cc/grqQqKqm" alt="Salame Napolitano">
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-name">Salame Napolitano</h3>
+                            <p class="product-description">Salame com especiarias típicas da região de Nápoles. Sabor marcante e aroma inconfundível.</p>
+                            <div class="product-price">79,90</div>
+                            <div class="product-actions">
+                                <div class="quantity-control">
+                                    <button class="quantity-btn minus">-</button>
+                                    <input type="text" class="quantity-input" value="1" readonly>
+                                    <button class="quantity-btn plus">+</button>
+                                </div>
+                                <button class="add-to-cart">Adicionar</button>
+                            </div>
+                            <button class="finish-order">
+                                <i class="fas fa-shopping-cart"></i> Finalizar Pedido
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Categoria Linguiças -->
+            <div id="linguicas" class="category-section">
+                <h3 class="section-title" style="font-size: 2rem; margin-top: 40px;">Linguiças</h3>
+                <div class="product-grid">
+                    <div class="product-card" data-category="linguicas">
+                        <div class="product-img">
+                            <img src="https://images.unsplash.com/photo-1596797038534-2a67ed6df61c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Linguiça Toscana">
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-name">Linguiça Toscana Artesanal</h3>
+                            <p class="product-description">Linguiça italiana temperada com especiarias tradicionais. Perfeita para churrascos e molhos.</p>
+                            <div class="product-price">54,90</div>
+                            <div class="product-actions">
+                                <div class="quantity-control">
+                                    <button class="quantity-btn minus">-</button>
+                                    <input type="text" class="quantity-input" value="1" readonly>
+                                    <button class="quantity-btn plus">+</button>
+                                </div>
+                                <button class="add-to-cart">Adicionar</button>
+                            </div>
+                            <button class="finish-order">
+                                <i class="fas fa-shopping-cart"></i> Finalizar Pedido
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="product-card" data-category="linguicas">
+                        <div class="product-img">
+                            <img src="https://images.unsplash.com/photo-1607305387299-a3d9611cd469?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Linguiça Calabresa">
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-name">Linguiça Calabresa Picante</h3>
+                            <p class="product-description">Linguiça com pimenta calabresa, ideal para quem aprecia um sabor mais intenso e picante.</p>
+                            <div class="product-price">49,90</div>
+                            <div class="product-actions">
+                                <div class="quantity-control">
+                                    <button class="quantity-btn minus">-</button>
+                                    <input type="text" class="quantity-input" value="1" readonly>
+                                    <button class="quantity-btn plus">+</button>
+                                </div>
+                                <button class="add-to-cart">Adicionar</button>
+                            </div>
+                            <button class="finish-order">
+                                <i class="fas fa-shopping-cart"></i> Finalizar Pedido
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="product-card" data-category="linguicas">
+                        <div class="product-img">
+                            <img src="https://images.unsplash.com/photo-1607305387299-a3d9611cd469?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Linguiça Portuguesa">
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-name">Linguiça Portuguesa Tradicional</h3>
+                            <p class="product-description">Linguiça portuguesa com vinho do Porto e especiarias. Sabor único e textura suculenta.</p>
+                            <div class="product-price">59,90</div>
+                            <div class="product-actions">
+                                <div class="quantity-control">
+                                    <button class="quantity-btn minus">-</button>
+                                    <input type="text" class="quantity-input" value="1" readonly>
+                                    <button class="quantity-btn plus">+</button>
+                                </div>
+                                <button class="add-to-cart">Adicionar</button>
+                            </div>
+                            <button class="finish-order">
+                                <i class="fas fa-shopping-cart"></i> Finalizar Pedido
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="product-card" data-category="linguicas">
+                        <div class="product-img">
+                            <img src="https://images.unsplash.com/photo-1607305387299-a3d9611cd469?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Linguiça Blumenau">
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-name">Linguiça Blumenau</h3>
+                            <p class="product-description">Linguiça alemã-brasileira, temperada com cominho e páprica. Ideal para chucrute e pratos germânicos.</p>
+                            <div class="product-price">44,90</div>
+                            <div class="product-actions">
+                                <div class="quantity-control">
+                                    <button class="quantity-btn minus">-</button>
+                                    <input type="text" class="quantity-input" value="1" readonly>
+                                    <button class="quantity-btn plus">+</button>
+                                </div>
+                                <button class="add-to-cart">Adicionar</button>
+                            </div>
+                            <button class="finish-order">
+                                <i class="fas fa-shopping-cart"></i> Finalizar Pedido
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Categoria Presuntos -->
+            <div id="presuntos" class="category-section">
+                <h3 class="section-title" style="font-size: 2rem; margin-top: 40px;">Presuntos</h3>
+                <div class="product-grid">
+                    <div class="product-card" data-category="presuntos">
+                        <div class="product-img">
+                            <img src="https://images.unsplash.com/photo-1607305387299-a3d9611cd469?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Presunto Parma">
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-name">Presunto Parma Premium</h3>
+                            <p class="product-description">Presunto italiano de alta qualidade, curado por 18 meses. Sabor intenso e textura única.</p>
+                            <div class="product-price">129,90</div>
+                            <div class="product-actions">
+                                <div class="quantity-control">
+                                    <button class="quantity-btn minus">-</button>
+                                    <input type="text" class="quantity-input" value="1" readonly>
+                                    <button class="quantity-btn plus">+</button>
+                                </div>
+                                <button class="add-to-cart">Adicionar</button>
+                            </div>
+                            <button class="finish-order">
+                                <i class="fas fa-shopping-cart"></i> Finalizar Pedido
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="product-card" data-category="presuntos">
+                        <div class="product-img">
+                            <img src="https://images.unsplash.com/photo-1607305387299-a3d9611cd469?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Presunto Serrano">
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-name">Presunto Serrano Espanhol</h3>
+                            <p class="product-description">Presunto espanhol curado nas montanhas, com sabor intenso e textura firme. Curado por 12 meses.</p>
+                            <div class="product-price">149,90</div>
+                            <div class="product-actions">
+                                <div class="quantity-control">
+                                    <button class="quantity-btn minus">-</button>
+                                    <input type="text" class="quantity-input" value="1" readonly>
+                                    <button class="quantity-btn plus">+</button>
+                                </div>
+                                <button class="add-to-cart">Adicionar</button>
+                            </div>
+                            <button class="finish-order">
+                                <i class="fas fa-shopping-cart"></i> Finalizar Pedido
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="product-card" data-category="presuntos">
+                        <div class="product-img">
+                            <img src="https://images.unsplash.com/photo-1607305387299-a3d9611cd469?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Presunto Ibérico">
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-name">Presunto Ibérico de Bellota</h3>
+                            <p class="product-description">Presunto ibérico de porcos alimentados com bolotas. Curado por 36 meses. Sabor excecional.</p>
+                            <div class="product-price">299,90</div>
+                            <div class="product-actions">
+                                <div class="quantity-control">
+                                    <button class="quantity-btn minus">-</button>
+                                    <input type="text" class="quantity-input" value="1" readonly>
+                                    <button class="quantity-btn plus">+</button>
+                                </div>
+                                <button class="add-to-cart">Adicionar</button>
+                            </div>
+                            <button class="finish-order">
+                                <i class="fas fa-shopping-cart"></i> Finalizar Pedido
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="product-card" data-category="presuntos">
+                        <div class="product-img">
+                            <img src="https://images.unsplash.com/photo-1607305387299-a3d9611cd469?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Presunto Cozido">
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-name">Presunto Cozido Premium</h3>
+                            <p class="product-description">Presunto cozido lentamente com especiarias. Textura macia e sabor suave. Ideal para sanduíches.</p>
+                            <div class="product-price">59,90</div>
+                            <div class="product-actions">
+                                <div class="quantity-control">
+                                    <button class="quantity-btn minus">-</button>
+                                    <input type="text" class="quantity-input" value="1" readonly>
+                                    <button class="quantity-btn plus">+</button>
+                                </div>
+                                <button class="add-to-cart">Adicionar</button>
+                            </div>
+                            <button class="finish-order">
+                                <i class="fas fa-shopping-cart"></i> Finalizar Pedido
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Categoria Queijos -->
+            <div id="queijos" class="category-section">
+                <h3 class="section-title" style="font-size: 2rem; margin-top: 40px;">Queijos</h3>
+                <div class="product-grid">
+                    <div class="product-card" data-category="queijos">
+                        <div class="product-img">
+                            <img src="https://images.unsplash.com/photo-1625739800888-a4d7e7b3b2f7?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Queijo Provolone">
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-name">Queijo Provolone Defumado</h3>
+                            <p class="product-description">Queijo italiano defumado lentamente com madeiras nobres. Sabor marcante e textura firme.</p>
+                            <div class="product-price">79,90</div>
+                            <div class="product-actions">
+                                <div class="quantity-control">
+                                    <button class="quantity-btn minus">-</button>
+                                    <input type="text" class="quantity-input" value="1" readonly>
+                                    <button class="quantity-btn plus">+</button>
+                                </div>
+                                <button class="add-to-cart">Adicionar</button>
+                            </div>
+                            <button class="finish-order">
+                                <i class="fas fa-shopping-cart"></i> Finalizar Pedido
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="product-card" data-category="queijos">
+                        <div class="product-img">
+                            <img src="https://images.unsplash.com/photo-1625739800888-a4d7e7b3b2f7?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Queijo Parmesão">
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-name">Queijo Parmesão 24 Meses</h3>
+                            <p class="product-description">Queijo parmesão italiano maturado por 24 meses. Sabor intenso e textura granulada.</p>
+                            <div class="product-price">119,90</div>
+                            <div class="product-actions">
+                                <div class="quantity-control">
+                                    <button class="quantity-btn minus">-</button>
+                                    <input type="text" class="quantity-input" value="1" readonly>
+                                    <button class="quantity-btn plus">+</button>
+                                </div>
+                                <button class="add-to-cart">Adicionar</button>
+                            </div>
+                            <button class="finish-order">
+                                <i class="fas fa-shopping-cart"></i> Finalizar Pedido
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="product-card" data-category="queijos">
+                        <div class="product-img">
+                            <img src="https://images.unsplash.com/photo-1625739800888-a4d7e7b3b2f7?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Queijo Gorgonzola">
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-name">Queijo Gorgonzola Picante</h3>
+                            <p class="product-description">Queijo azul italiano com sabor picante e textura cremosa. Maturado por 90 dias.</p>
+                            <div class="product-price">99,90</div>
+                            <div class="product-actions">
+                                <div class="quantity-control">
+                                    <button class="quantity-btn minus">-</button>
+                                    <input type="text" class="quantity-input" value="1" readonly>
+                                    <button class="quantity-btn plus">+</button>
+                                </div>
+                                <button class="add-to-cart">Adicionar</button>
+                            </div>
+                            <button class="finish-order">
+                                <i class="fas fa-shopping-cart"></i> Finalizar Pedido
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="product-card" data-category="queijos">
+                        <div class="product-img">
+                            <img src="https://images.unsplash.com/photo-1625739800888-a4d7e7b3b2f7?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Queijo Mozzarella">
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-name">Queijo Mozzarella de Búfala</h3>
+                            <p class="product-description">Mozzarella fresca feita com leite de búfala. Textura macia e sabor delicado.</p>
+                            <div class="product-price">54,90</div>
+                            <div class="product-actions">
+                                <div class="quantity-control">
+                                    <button class="quantity-btn minus">-</button>
+                                    <input type="text" class="quantity-input" value="1" readonly>
+                                    <button class="quantity-btn plus">+</button>
+                                </div>
+                                <button class="add-to-cart">Adicionar</button>
+                            </div>
+                            <button class="finish-order">
+                                <i class="fas fa-shopping-cart"></i> Finalizar Pedido
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Categoria Acompanhamentos -->
+            <div id="acomp" class="category-section">
+                <h3 class="section-title" style="font-size: 2rem; margin-top: 40px;">Acompanhamentos</h3>
+                <div class="product-grid">
+                    <div class="product-card" data-category="acomp">
+                        <div class="product-img">
+                            <img src="https://images.unsplash.com/photo-1486475594124-0d6b7aca5d6b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Azeitonas">
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-name">Mix de Azeitonas Premium</h3>
+                            <p class="product-description">Seleção de azeitonas verdes e pretas, temperadas com ervas finas e azeite extra virgem.</p>
+                            <div class="product-price">39,90</div>
+                            <div class="product-actions">
+                                <div class="quantity-control">
+                                    <button class="quantity-btn minus">-</button>
+                                    <input type="text" class="quantity-input" value="1" readonly>
+                                    <button class="quantity-btn plus">+</button>
+                                </div>
+                                <button class="add-to-cart">Adicionar</button>
+                            </div>
+                            <button class="finish-order">
+                                <i class="fas fa-shopping-cart"></i> Finalizar Pedido
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="product-card" data-category="acomp">
+                        <div class="product-img">
+                            <img src="https://images.unsplash.com/photo-1590502593747-42a996133562?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Pães">
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-name">Cesta de Pães Artesanais</h3>
+                            <p class="product-description">Seleção de pães artesanais: ciabatta, baguete, pão de nozes e pão azeitona.</p>
+                            <div class="product-price">49,90</div>
+                            <div class="product-actions">
+                                <div class="quantity-control">
+                                    <button class="quantity-btn minus">-</button>
+                                    <input type="text" class="quantity-input" value="1" readonly>
+                                    <button class="quantity-btn plus">+</button>
+                                </div>
+                                <button class="add-to-cart">Adicionar</button>
+                            </div>
+                            <button class="finish-order">
+                                <i class="fas fa-shopping-cart"></i> Finalizar Pedido
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="product-card" data-category="acomp">
+                        <div class="product-img">
+                            <img src="https://images.unsplash.com/photo-1478369402113-1fd53f17e8b4?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Geleias">
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-name">Geleia de Pimenta Vermelha</h3>
+                            <p class="product-description">Geleia artesanal de pimenta vermelha, perfeita para acompanhar queijos e presuntos.</p>
+                            <div class="product-price">29,90</div>
+                            <div class="product-actions">
+                                <div class="quantity-control">
+                                    <button class="quantity-btn minus">-</button>
+                                    <input type="text" class="quantity-input" value="1" readonly>
+                                    <button class="quantity-btn plus">+</button>
+                                </div>
+                                <button class="add-to-cart">Adicionar</button>
+                            </div>
+                            <button class="finish-order">
+                                <i class="fas fa-shopping-cart"></i> Finalizar Pedido
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="product-card" data-category="acomp">
+                        <div class="product-img">
+                            <img src="https://images.unsplash.com/photo-1556910103-1c02745aae4a?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Mel">
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-name">Mel com Ervas Finas</h3>
+                            <p class="product-description">Mel artesanal infundido com alecrim, tomilho e lavanda. Perfeito para queijos e torradas.</p>
+                            <div class="product-price">34,90</div>
+                            <div class="product-actions">
+                                <div class="quantity-control">
+                                    <button class="quantity-btn minus">-</button>
+                                    <input type="text" class="quantity-input" value="1" readonly>
+                                    <button class="quantity-btn plus">+</button>
+                                </div>
+                                <button class="add-to-cart">Adicionar</button>
+                            </div>
+                            <button class="finish-order">
+                                <i class="fas fa-shopping-cart"></i> Finalizar Pedido
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Categoria Kits -->
+            <div id="kits" class="category-section">
+                <h3 class="section-title" style="font-size: 2rem; margin-top: 40px;">Kits</h3>
+                <div class="product-grid">
+                    <div class="product-card" data-category="kits">
+                        <div class="product-img">
+                            <img src="https://images.unsplash.com/photo-1486475594124-0d6b7aca5d6b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Kit Premium">
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-name">Kit Degustação Premium</h3>
+                            <p class="product-description">Seleção especial com 3 tipos de salames, 2 queijos e azeitonas. Perfeito para presentear.</p>
+                            <div class="product-price">199,90</div>
+                            <div class="product-actions">
+                                <div class="quantity-control">
+                                    <button class="quantity-btn minus">-</button>
+                                    <input type="text" class="quantity-input" value="1" readonly>
+                                    <button class="quantity-btn plus">+</button>
+                                </div>
+                                <button class="add-to-cart">Adicionar</button>
+                            </div>
+                            <button class="finish-order">
+                                <i class="fas fa-shopping-cart"></i> Finalizar Pedido
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="product-card" data-category="kits">
+                        <div class="product-img">
+                            <img src="https://images.unsplash.com/photo-1596797038534-2a67ed6df61c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Kit Italiano">
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-name">Kit Italiano Tradicional</h3>
+                            <p class="product-description">Salame italiano, presunto Parma, queijo provolone e azeitonas. Tudo o que precisa para uma tábua italiana.</p>
+                            <div class="product-price">169,90</div>
+                            <div class="product-actions">
+                                <div class="quantity-control">
+                                    <button class="quantity-btn minus">-</button>
+                                    <input type="text" class="quantity-input" value="1" readonly>
+                                    <button class="quantity-btn plus">+</button>
+                                </div>
+                                <button class="add-to-cart">Adicionar</button>
+                            </div>
+                            <button class="finish-order">
+                                <i class="fas fa-shopping-cart"></i> Finalizar Pedido
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="product-card" data-category="kits">
+                        <div class="product-img">
+                            <img src="https://images.unsplash.com/photo-1556910103-1c02745aae4a?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Kit Espanhol">
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-name">Kit Espanhol Autêntico</h3>
+                            <p class="product-description">Presunto serrano, salame espanhol, queijo manchego e azeitonas verdes. Sabores da Espanha.</p>
+                            <div class="product-price">189,90</div>
+                            <div class="product-actions">
+                                <div class="quantity-control">
+                                    <button class="quantity-btn minus">-</button>
+                                    <input type="text" class="quantity-input" value="1" readonly>
+                                    <button class="quantity-btn plus">+</button>
+                                </div>
+                                <button class="add-to-cart">Adicionar</button>
+                            </div>
+                            <button class="finish-order">
+                                <i class="fas fa-shopping-cart"></i> Finalizar Pedido
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="product-card" data-category="kits">
+                        <div class="product-img">
+                            <img src="https://images.unsplash.com/photo-1590502593747-42a996133562?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Kit de Queijos">
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-name">Kit Degustação de Queijos</h3>
+                            <p class="product-description">Seleção com 4 queijos diferentes: brie, gorgonzola, provolone, parmesão e coalho.</p>
+                            <div class="product-price">149,90</div>
+                            <div class="product-actions">
+                                <div class="quantity-control">
+                                    <button class="quantity-btn minus">-</button>
+                                    <input type="text" class="quantity-input" value="1" readonly>
+                                    <button class="quantity-btn plus">+</button>
+                                </div>
+                                <button class="add-to-cart">Adicionar</button>
+                            </div>
+                            <button class="finish-order">
+                                <i class="fas fa-shopping-cart"></i> Finalizar Pedido
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <div class="cart-overlay">
+        <div class="cart">
+            <div class="cart-header">
+                <h3 class="cart-title">Seu Carrinho</h3>
+                <button class="close-cart">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            
+            <div class="cart-items">
+                <!-- Os itens do carrinho serão inseridos aqui via JavaScript -->
+            </div>
+            
+            <div class="cart-footer">
+                <div class="cart-total">
+                    <span>Total:</span>
+                    <span>R$ 0,00</span>
+                </div>
+                <div class="cart-actions">
+                    <button class="checkout-btn">Finalizar Compra</button>
+                    <button class="clear-cart-btn">Limpar</button>
+                </div>
+            </div>
+            
+            <div class="checkout-form">
+                <button class="back-to-cart">
+                    <i class="fas fa-arrow-left"></i> Voltar ao Carrinho
+                </button>
+                
+                <div class="form-group">
+                    <label class="form-label" for="name">Nome Completo</label>
+                    <input type="text" id="name" class="form-input" placeholder="Seu nome completo">
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label" for="phone">Telefone</label>
+                    <input type="text" id="phone" class="form-input" placeholder="(00) 00000-0000">
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label" for="address">Endereço de Entrega</label>
+                    <textarea id="address" class="form-textarea" placeholder="Rua, número, bairro, complemento..."></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label" for="reference">Ponto de Referência</label>
+                    <textarea id="reference" class="form-textarea" placeholder="Ponto de referência para facilitar a entrega..."></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">Forma de Pagamento</label>
+                    <div class="payment-options">
+                        <div class="payment-option">
+                            <input type="radio" id="payment-dinheiro" name="payment" value="Dinheiro">
+                            <label for="payment-dinheiro">
+                                <i class="fas fa-money-bill-wave"></i> Dinheiro
+                            </label>
+                        </div>
+                        <div class="payment-option">
+                            <input type="radio" id="payment-cartao" name="payment" value="Cartão">
+                            <label for="payment-cartao">
+                                <i class="fas fa-credit-card"></i> Cartão
+                            </label>
+                        </div>
+                        <div class="payment-option">
+                            <input type="radio" id="payment-pix" name="payment" value="PIX">
+                            <label for="payment-pix">
+                                <i class="fas fa-qrcode"></i> PIX
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                
+                <button class="submit-order">
+                    <i class="fab fa-whatsapp"></i> Finalizar Pedido via WhatsApp
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <div class="notification">
+        <i class="fas fa-check-circle"></i>
+        <span>Produto adicionado ao carrinho!</span>
+    </div>
+    
+    <!-- Rodapé -->
+    <footer>
+        <div class="footer-image"></div>
+        <div class="container footer-content">
+            <div class="footer-grid">
+                <div class="footer-section">
+                    <h3>Sobre Nós</h3>
+                    <p>A Charcutaria Artesanal oferece produtos de alta qualidade, feitos com técnicas tradicionais e ingredientes selecionados para proporcionar uma experiência gastronômica única.</p>
+                    <a href="#trabalhe-conosco" class="work-with-us">
+                        <i class="fas fa-briefcase"></i> Trabalhe Conosco
+                    </a>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Contato</h3>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt"></i> Rua dos Sabores, 123 - Centro</li>
+                        <li><i class="fas fa-phone"></i> (11) 1234-5678</li>
+                        <li><i class="fas fa-envelope"></i> contato@charcutariaartesanal.com.br</li>
+                        <li><i class="fas fa-clock"></i> Seg-Sex: 9h às 18h | Sáb: 9h às 14h</li>
+                    </ul>
+                </div>
+
+                
+                <div class="footer-section">
+                    <h3>Siga-nos</h3>
+                    <p>Acompanhe nossas novidades e promoções nas redes sociais.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>© 2023 Charcutaria Artesanal. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Slider functionality
+            const slides = document.querySelectorAll('.slide');
+            const dots = document.querySelectorAll('.slider-dot');
+            let currentSlide = 0;
+            
+            function showSlide(index) {
+                slides.forEach(slide => slide.classList.remove('active'));
+                dots.forEach(dot => dot.classList.remove('active'));
+                
+                slides[index].classList.add('active');
+                dots[index].classList.add('active');
+                currentSlide = index;
+            }
+            
+            dots.forEach((dot, index) => {
+                dot.addEventListener('click', () => showSlide(index));
+            });
+            
+            // Auto-advance slides
+            setInterval(() => {
+                currentSlide = (currentSlide + 1) % slides.length;
+                showSlide(currentSlide);
+            }, 5000);
+            
+            // Scroll to products
+            document.querySelector('.scroll-to-products').addEventListener('click', function() {
+                document.getElementById('products').scrollIntoView({ behavior: 'smooth' });
+            });
+            
+            // Cart functionality
+            const cartIcon = document.querySelector('.cart-icon');
+            const cartOverlay = document.querySelector('.cart-overlay');
+            const closeCart = document.querySelector('.close-cart');
+            const cartItems = document.querySelector('.cart-items');
+            const cartTotal = document.querySelector('.cart-total span:last-child');
+            const cartCount = document.querySelector('.cart-count');
+            const clearCartBtn = document.querySelector('.clear-cart-btn');
+            const checkoutBtn = document.querySelector('.checkout-btn');
+            const checkoutForm = document.querySelector('.checkout-form');
+            const backToCartBtn = document.querySelector('.back-to-cart');
+            const submitOrderBtn = document.querySelector('.submit-order');
+            const notification = document.querySelector('.notification');
+            
+            let cart = [];
+            
+            // Open cart
+            cartIcon.addEventListener('click', function() {
+                cartOverlay.classList.add('active');
+                renderCart();
+            });
+            
+            // Close cart
+            closeCart.addEventListener('click', function() {
+                cartOverlay.classList.remove('active');
+            });
+            
+            // Close cart when clicking outside
+            cartOverlay.addEventListener('click', function(e) {
+                if (e.target === cartOverlay) {
+                    cartOverlay.classList.remove('active');
+                }
+            });
+            
+            // Add to cart
+            document.querySelectorAll('.add-to-cart').forEach(button => {
+                button.addEventListener('click', function() {
+                    const productCard = this.closest('.product-card');
+                    const productName = productCard.querySelector('.product-name').textContent;
+                    const productPrice = parseFloat(productCard.querySelector('.product-price').textContent.replace(',', '.'));
+                    const quantity = parseInt(productCard.querySelector('.quantity-input').value);
+                    
+                    // Check if product already in cart
+                    const existingProduct = cart.find(item => item.name === productName);
+                    
+                    if (existingProduct) {
+                        existingProduct.quantity += quantity;
+                    } else {
+                        cart.push({
+                            name: productName,
+                            price: productPrice,
+                            quantity: quantity
+                        });
+                    }
+                    
+                    // Reset quantity
+                    productCard.querySelector('.quantity-input').value = 1;
+                    
+                    // Update cart
+                    updateCart();
+                    
+                    // Adicionar animação ao ícone do carrinho
+                    cartIcon.classList.add('shake');
+                    cartCount.classList.add('bounce');
+                    
+                    // Remover classes de animação após a conclusão
+                    setTimeout(() => {
+                        cartIcon.classList.remove('shake');
+                        cartCount.classList.remove('bounce');
+                    }, 500);
+                    
+                    // Show notification
+                    showNotification('Produto adicionado ao carrinho!');
+                });
+            });
+            
+            // Finish order button - Open cart
+            document.querySelectorAll('.finish-order').forEach(button => {
+                button.addEventListener('click', function() {
+                    cartOverlay.classList.add('active');
+                    renderCart();
+                });
+            });
+            
+            // Quantity controls
+            document.querySelectorAll('.quantity-btn').forEach(button => {
+                button.addEventListener('click', function() {
+                    const input = this.parentElement.querySelector('.quantity-input');
+                    let value = parseInt(input.value);
+                    
+                    if (this.classList.contains('minus') && value > 1) {
+                        value--;
+                    } else if (this.classList.contains('plus')) {
+                        value++;
+                    }
+                    
+                    input.value = value;
+                });
+            });
+            
+            // Update cart
+            function updateCart() {
+                // Update cart count
+                let totalItems = 0;
+                cart.forEach(item => {
+                    totalItems += item.quantity;
+                });
+                cartCount.textContent = totalItems;
+                
+                // Update cart total
+                let total = 0;
+                cart.forEach(item => {
+                    total += item.price * item.quantity;
+                });
+                cartTotal.textContent = `R$ ${total.toFixed(2).replace('.', ',')}`;
+            }
+            
+            // Render cart
+            function renderCart() {
+                cartItems.innerHTML = '';
+                
+                if (cart.length === 0) {
+                    cartItems.innerHTML = '<p style="text-align: center; padding: 20px; color: #888;">Seu carrinho está vazio</p>';
+                    return;
+                }
+                
+                cart.forEach((item, index) => {
+                    const cartItem = document.createElement('div');
+                    cartItem.classList.add('cart-item');
+                    
+                    cartItem.innerHTML = `
+                        <div class="cart-item-info">
+                            <div class="cart-item-name">${item.name}</div>
+                            <div class="cart-item-price">R$ ${item.price.toFixed(2).replace('.', ',')}</div>
+                        </div>
+                        <div class="cart-item-quantity">
+                            <button class="quantity-btn minus" data-index="${index}">-</button>
+                            <span>${item.quantity}</span>
+                            <button class="quantity-btn plus" data-index="${index}">+</button>
+                        </div>
+                    `;
+                    
+                    cartItems.appendChild(cartItem);
+                });
+                
+                // Add event listeners to quantity buttons
+                document.querySelectorAll('.cart-item .quantity-btn').forEach(button => {
+                    button.addEventListener('click', function() {
+                        const index = parseInt(this.getAttribute('data-index'));
+                        
+                        if (this.classList.contains('minus') && cart[index].quantity > 1) {
+                            cart[index].quantity--;
+                        } else if (this.classList.contains('plus')) {
+                            cart[index].quantity++;
+                        }
+                        
+                        renderCart();
+                        updateCart();
+                    });
+                });
+            }
+            
+            // Clear cart
+            clearCartBtn.addEventListener('click', function() {
+                cart = [];
+                renderCart();
+                updateCart();
+            });
+            
+            // Checkout
+            checkoutBtn.addEventListener('click', function() {
+                if (cart.length === 0) {
+                    showNotification('Seu carrinho está vazio!', 'warning');
+                    return;
+                }
+                
+                cartItems.style.display = 'none';
+                checkoutForm.classList.add('active');
+            });
+            
+            // Back to cart
+            backToCartBtn.addEventListener('click', function() {
+                cartItems.style.display = 'block';
+                checkoutForm.classList.remove('active');
+            });
+            
+            // Payment options
+            const paymentOptions = document.querySelectorAll('.payment-option input[type="radio"]');
+            paymentOptions.forEach(option => {
+                option.addEventListener('change', function() {
+                    // Remove active class from all labels
+                    document.querySelectorAll('.payment-option label').forEach(label => {
+                        label.style.borderColor = '#eee';
+                        label.style.backgroundColor = 'transparent';
+                    });
+                    
+                    // Add active class to selected option
+                    if (this.checked) {
+                        const label = this.nextElementSibling;
+                        label.style.borderColor = 'var(--primary)';
+                        label.style.backgroundColor = 'rgba(139, 0, 0, 0.05)';
+                    }
+                });
+            });
+            
+            // Submit order via WhatsApp
+            submitOrderBtn.addEventListener('click', function() {
+                // Get form data
+                const name = document.getElementById('name').value;
+                const phone = document.getElementById('phone').value;
+                const address = document.getElementById('address').value;
+                const reference = document.getElementById('reference').value;
+                const paymentMethod = document.querySelector('.payment-option input[type="radio"]:checked');
+                
+                // Validate form
+                if (!name || !phone || !address || !paymentMethod) {
+                    showNotification('Por favor, preencha todos os campos obrigatórios do formulário.', 'warning');
+                    return;
+                }
+                
+                // Build order message
+                let orderMessage = `Olá! Gostaria de fazer um pedido:%0A%0A`;
+                orderMessage += `*Nome:* ${name}%0A`;
+                orderMessage += `*Telefone:* ${phone}%0A`;
+                orderMessage += `*Endereço:* ${address}%0A`;
+                
+                if (reference) {
+                    orderMessage += `*Ponto de Referência:* ${reference}%0A`;
+                }
+                
+                orderMessage += `*Forma de pagamento:* ${paymentMethod.value}%0A%0A`;
+                orderMessage += `*Itens do pedido:*%0A`;
+                
+                let total = 0;
+                cart.forEach(item => {
+                    orderMessage += `- ${item.name} (Quantidade: ${item.quantity}) - R$ ${(item.price * item.quantity).toFixed(2).replace('.', ',')}%0A`;
+                    total += item.price * item.quantity;
+                });
+                
+                orderMessage += `%0A*Total: R$ ${total.toFixed(2).replace('.', ',')}*`;
+                
+                // Open WhatsApp with message
+                const whatsappUrl = `https://wa.me/?text=${orderMessage}`;
+                window.open(whatsappUrl, '_blank');
+                
+                // Reset cart and form
+                cart = [];
+                updateCart();
+                renderCart();
+                
+                // Close cart
+                cartOverlay.classList.remove('active');
+                
+                // Reset form
+                document.getElementById('name').value = '';
+                document.getElementById('phone').value = '';
+                document.getElementById('address').value = '';
+                document.getElementById('reference').value = '';
+                paymentMethod.checked = false;
+                document.querySelectorAll('.payment-option label').forEach(label => {
+                    label.style.borderColor = '#eee';
+                    label.style.backgroundColor = 'transparent';
+                });
+                
+                // Show success notification
+                showNotification('Pedido enviado com sucesso!', 'success');
+            });
+            
+            // Show notification
+            function showNotification(message, type = 'success') {
+                notification.querySelector('span').textContent = message;
+                
+                // Set notification color based on type
+                if (type === 'success') {
+                    notification.style.backgroundColor = 'var(--success)';
+                    notification.querySelector('i').className = 'fas fa-check-circle';
+                } else if (type === 'warning') {
+                    notification.style.backgroundColor = 'var(--accent)';
+                    notification.querySelector('i').className = 'fas fa-exclamation-circle';
+                }
+                
+                notification.classList.add('show');
+                setTimeout(() => {
+                    notification.classList.remove('show');
+                }, 3000);
+            }
+            
+            // Categories filter and anchor
+            const categoryItems = document.querySelectorAll('.category-item');
+            categoryItems.forEach(item => {
+                item.addEventListener('click', function() {
+                    // Remove active class from all categories
+                    categoryItems.forEach(cat => cat.classList.remove('active'));
+                    
+                    // Add active class to clicked category
+                    this.classList.add('active');
+                    
+                    // Get category
+                    const category = this.getAttribute('data-category');
+                    
+                    // Scroll to category section
+                    if (category !== 'todos') {
+                        const categorySection = document.getElementById(category);
+                        if (categorySection) {
+                            // Rola para a seção da categoria
+                            categorySection.scrollIntoView({ behavior: 'smooth' });
+                            
+                            // Adiciona um pequeno atraso para garantir que a rolagem seja concluída
+                            setTimeout(() => {
+                                // Encontra o primeiro produto da categoria
+                                const firstProduct = categorySection.querySelector('.product-card');
+                                if (firstProduct) {
+                                    // Calcula a posição do primeiro produto em relação ao topo da página
+                                    const productPosition = firstProduct.getBoundingClientRect().top + window.pageYOffset;
+                                    
+                                    // Ajusta a posição para garantir que o produto fique visível abaixo do menu fixo
+                                    const headerHeight = document.querySelector('header').offsetHeight;
+                                    const categoriesHeight = document.querySelector('.categories-bar').offsetHeight;
+                                    const offset = headerHeight + categoriesHeight + 20; // 20px de margem extra
+                                    
+                                    // Rola suavemente para a posição ajustada
+                                    window.scrollTo({
+                                        top: productPosition - offset,
+                                        behavior: 'smooth'
+                                    });
+                                }
+                            }, 300); // 300ms de atraso para garantir que a primeira rolagem seja concluída
+                        }
+                    } else {
+                        // Scroll to top of products section
+                        document.getElementById('products').scrollIntoView({ behavior: 'smooth' });
+                    }
+                    
+                    // Filter products
+                    const productCards = document.querySelectorAll('.product-card');
+                    productCards.forEach(card => {
+                        if (category === 'todos' || card.getAttribute('data-category') === category) {
+                            card.style.display = 'block';
+                        } else {
+                            card.style.display = 'none';
+                        }
+                    });
+                    
+                    // Show notification
+                    const categoryName = this.textContent;
+                    showNotification(`Exibindo: ${categoryName}`, 'success');
+                });
+            });
+        });
+    </script>
+</body>
+</html>
