@@ -3,50 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Salames Artesanais</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>Charcutaria Artesanal - Produtos Selecionados</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
-    <script src="produtos.js"></script>
 </head>
 <body>
-    <!-- Cabeçalho -->
     <header>
         <div class="container">
-            <div class="logo">
-                <h1>Salames Artesanais</h1>
-            </div>
-            <nav>
-                <ul>
-                    <li><a href="#home">Início</a></li>
-                    <li><a href="#products">Produtos</a></li>
-                    <li><a href="#about">Sobre</a></li>
-                    <li><a href="#contact">Contato</a></li>
-                </ul>
-            </nav>
-            <div class="cart-icon" id="cart-icon">
-                <i class="fas fa-shopping-cart"></i>
-                <span class="cart-count" id="cart-count">0</span>
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-drumstick-bite"></i>
+                    Charcutaria Artesanal
+                </div>
+                <div class="cart-icon">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-count">0</span>
+                </div>
             </div>
         </div>
     </header>
-
-    <!-- Seção Hero -->
-    <section id="home" class="hero">
+    
+    <div class="categories-bar">
         <div class="container">
-            <div class="hero-content">
-                <h2>Salames Artesanais de Qualidade</h2>
-                <p>Feitos com tradição e os melhores ingredientes</p>
-                <a href="#products" class="btn">Ver Produtos</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Seção de Produtos -->
-    <section class="products" id="products">
-        <div class="container">
-            <h2 class="section-title">Nossos Produtos</h2>
-            
-            <!-- Barra de Categorias -->
             <div class="categories-container">
                 <div class="category-item active" data-category="todos">Todos</div>
                 <div class="category-item" data-category="salames">Salames</div>
@@ -54,442 +32,755 @@
                 <div class="category-item" data-category="presuntos">Presuntos</div>
                 <div class="category-item" data-category="queijos">Queijos</div>
                 <div class="category-item" data-category="acomp">Acompanhamentos</div>
-                <div class="category-item" data-category="kits">Kits Especiais</div>
+                <div class="category-item" data-category="kits">Kits</div>
             </div>
+        </div>
+    </div>
+    
+    <section class="banner">
+        <div class="slider">
+            <!-- Imagens de alta qualidade para o slide -->
+            <div class="slide active" style="background-image: url('https://iili.io/K0th1fa.webp')">
+                <div class="slide-overlay">
+                    <h1>Sabores Artesanais</h1>
+                    <p>Descubra nossa seleção exclusiva de produtos artesanais, preparados com ingredientes selecionados e técnicas tradicionais.</p>
+                    <button class="scroll-to-products">
+                        Ver Produtos <i class="fas fa-arrow-down"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="slide" style="background-image: url('https://i.postimg.cc/fW6ss2Vt/202592613222376-png.webp')">
+                <div class="slide-overlay">
+                    <h1>Qualidade Premium</h1>
+                    <p>Cada produto é cuidadosamente elaborado para proporcionar uma experiência gastronômica única e inesquecível.</p>
+                    <button class="scroll-to-products">
+                        Ver Produtos <i class="fas fa-arrow-down"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="slide" style="background-image: url('https://iili.io/K0tl4Db.jpg')">
+                <div class="slide-overlay">
+                    <h1>Tradição e Sabor</h1>
+                    <p>Receitas de família aprimoradas ao longo de gerações, trazendo autenticidade e sabor para sua mesa.</p>
+                    <button class="scroll-to-products">
+                        Ver Produtos <i class="fas fa-arrow-down"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="slider-nav">
+            <div class="slider-dot active" data-slide="0"></div>
+            <div class="slider-dot" data-slide="1"></div>
+            <div class="slider-dot" data-slide="2"></div>
+        </div>
+    </section>
+    
+    <section class="products" id="products">
+        <div class="container">
+            <h2 class="section-title">Nossos Produtos</h2>
             
             <!-- Categoria Salames -->
             <div id="salames" class="category-section">
                 <h3 class="section-title" style="font-size: 2rem; margin-top: 40px;">Salames</h3>
-                <div class="product-grid" id="salames-grid">
-                    <!-- Produtos serão inseridos aqui via JavaScript -->
+                <div class="product-grid">
+                    <div class="product-card" data-category="salames">
+                        <div class="product-img">
+                            <img src="https://images.unsplash.com/photo-1610367485454-2e68f3643b5e?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Salame Italiano">
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-name">Salame Italiano Artesanal</h3>
+                            <p class="product-description">Salame tradicional italiano, preparado com carnes selecionadas e especiarias importadas. Maturado por 90 dias.</p>
+                            <div class="product-price">89,90</div>
+                            <div class="product-actions">
+                                <div class="quantity-control">
+                                    <button class="quantity-btn minus">-</button>
+                                    <input type="text" class="quantity-input" value="1" readonly>
+                                    <button class="quantity-btn plus">+</button>
+                                </div>
+                                <button class="add-to-cart">Adicionar</button>
+                            </div>
+                            <button class="finish-order">
+                                <i class="fas fa-shopping-cart"></i> Finalizar Pedido
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="product-card" data-category="salames">
+                        <div class="product-img">
+                            <img src="https://images.unsplash.com/photo-1550989460-0adf9ea622e2?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Copacabana">
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-name">Copacabana Especial</h3>
+                            <p class="product-description">Salame brasileiro com toques de pimenta e especiarias. Ideal para quem aprecia sabores mais intensos.</p>
+                            <div class="product-price">69,90</div>
+                            <div class="product-actions">
+                                <div class="quantity-control">
+                                    <button class="quantity-btn minus">-</button>
+                                    <input type="text" class="quantity-input" value="1" readonly>
+                                    <button class="quantity-btn plus">+</button>
+                                </div>
+                                <button class="add-to-cart">Adicionar</button>
+                            </div>
+                            <button class="finish-order">
+                                <i class="fas fa-shopping-cart"></i> Finalizar Pedido
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="product-card" data-category="salames">
+                        <div class="product-img">
+                            <img src="https://images.unsplash.com/photo-1610367485454-2e68f3643b5e?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Salame Milano">
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-name">Salame Milano Tradicional</h3>
+                            <p class="product-description">Clássico salame italiano com grãos de pimenta. Textura macia e sabor equilibrado.</p>
+                            <div class="product-price">94,90</div>
+                            <div class="product-actions">
+                                <div class="quantity-control">
+                                    <button class="quantity-btn minus">-</button>
+                                    <input type="text" class="quantity-input" value="1" readonly>
+                                    <button class="quantity-btn plus">+</button>
+                                </div>
+                                <button class="add-to-cart">Adicionar</button>
+                            </div>
+                            <button class="finish-order">
+                                <i class="fas fa-shopping-cart"></i> Finalizar Pedido
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="product-card" data-category="salames">
+                        <div class="product-img">
+                            <img src="https://postimg.cc/grqQqKqm" alt="Salame Napolitano">
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-name">Salame Napolitano</h3>
+                            <p class="product-description">Salame com especiarias típicas da região de Nápoles. Sabor marcante e aroma inconfundível.</p>
+                            <div class="product-price">79,90</div>
+                            <div class="product-actions">
+                                <div class="quantity-control">
+                                    <button class="quantity-btn minus">-</button>
+                                    <input type="text" class="quantity-input" value="1" readonly>
+                                    <button class="quantity-btn plus">+</button>
+                                </div>
+                                <button class="add-to-cart">Adicionar</button>
+                            </div>
+                            <button class="finish-order">
+                                <i class="fas fa-shopping-cart"></i> Finalizar Pedido
+                            </button>
+                        </div>
+                    </div>
                 </div>
             </div>
             
             <!-- Categoria Linguiças -->
             <div id="linguicas" class="category-section">
                 <h3 class="section-title" style="font-size: 2rem; margin-top: 40px;">Linguiças</h3>
-                <div class="product-grid" id="linguicas-grid">
-                    <!-- Produtos serão inseridos aqui via JavaScript -->
+                <div class="product-grid">
+                    <div class="product-card" data-category="linguicas">
+                        <div class="product-img">
+                            <img src="https://images.unsplash.com/photo-1596797038534-2a67ed6df61c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Linguiça Toscana">
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-name">Linguiça Toscana Artesanal</h3>
+                            <p class="product-description">Linguiça italiana temperada com especiarias tradicionais. Perfeita para churrascos e molhos.</p>
+                            <div class="product-price">54,90</div>
+                            <div class="product-actions">
+                                <div class="quantity-control">
+                                    <button class="quantity-btn minus">-</button>
+                                    <input type="text" class="quantity-input" value="1" readonly>
+                                    <button class="quantity-btn plus">+</button>
+                                </div>
+                                <button class="add-to-cart">Adicionar</button>
+                            </div>
+                            <button class="finish-order">
+                                <i class="fas fa-shopping-cart"></i> Finalizar Pedido
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="product-card" data-category="linguicas">
+                        <div class="product-img">
+                            <img src="https://images.unsplash.com/photo-1607305387299-a3d9611cd469?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Linguiça Calabresa">
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-name">Linguiça Calabresa Picante</h3>
+                            <p class="product-description">Linguiça com pimenta calabresa, ideal para quem aprecia um sabor mais intenso e picante.</p>
+                            <div class="product-price">49,90</div>
+                            <div class="product-actions">
+                                <div class="quantity-control">
+                                    <button class="quantity-btn minus">-</button>
+                                    <input type="text" class="quantity-input" value="1" readonly>
+                                    <button class="quantity-btn plus">+</button>
+                                </div>
+                                <button class="add-to-cart">Adicionar</button>
+                            </div>
+                            <button class="finish-order">
+                                <i class="fas fa-shopping-cart"></i> Finalizar Pedido
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="product-card" data-category="linguicas">
+                        <div class="product-img">
+                            <img src="https://images.unsplash.com/photo-1607305387299-a3d9611cd469?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Linguiça Portuguesa">
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-name">Linguiça Portuguesa Tradicional</h3>
+                            <p class="product-description">Linguiça portuguesa com vinho do Porto e especiarias. Sabor único e textura suculenta.</p>
+                            <div class="product-price">59,90</div>
+                            <div class="product-actions">
+                                <div class="quantity-control">
+                                    <button class="quantity-btn minus">-</button>
+                                    <input type="text" class="quantity-input" value="1" readonly>
+                                    <button class="quantity-btn plus">+</button>
+                                </div>
+                                <button class="add-to-cart">Adicionar</button>
+                            </div>
+                            <button class="finish-order">
+                                <i class="fas fa-shopping-cart"></i> Finalizar Pedido
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="product-card" data-category="linguicas">
+                        <div class="product-img">
+                            <img src="https://images.unsplash.com/photo-1607305387299-a3d9611cd469?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Linguiça Blumenau">
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-name">Linguiça Blumenau</h3>
+                            <p class="product-description">Linguiça alemã-brasileira, temperada com cominho e páprica. Ideal para chucrute e pratos germânicos.</p>
+                            <div class="product-price">44,90</div>
+                            <div class="product-actions">
+                                <div class="quantity-control">
+                                    <button class="quantity-btn minus">-</button>
+                                    <input type="text" class="quantity-input" value="1" readonly>
+                                    <button class="quantity-btn plus">+</button>
+                                </div>
+                                <button class="add-to-cart">Adicionar</button>
+                            </div>
+                            <button class="finish-order">
+                                <i class="fas fa-shopping-cart"></i> Finalizar Pedido
+                            </button>
+                        </div>
+                    </div>
                 </div>
             </div>
             
             <!-- Categoria Presuntos -->
             <div id="presuntos" class="category-section">
                 <h3 class="section-title" style="font-size: 2rem; margin-top: 40px;">Presuntos</h3>
-                <div class="product-grid" id="presuntos-grid">
-                    <!-- Produtos serão inseridos aqui via JavaScript -->
+                <div class="product-grid">
+                    <div class="product-card" data-category="presuntos">
+                        <div class="product-img">
+                            <img src="https://images.unsplash.com/photo-1607305387299-a3d9611cd469?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Presunto Parma">
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-name">Presunto Parma Premium</h3>
+                            <p class="product-description">Presunto italiano de alta qualidade, curado por 18 meses. Sabor intenso e textura única.</p>
+                            <div class="product-price">129,90</div>
+                            <div class="product-actions">
+                                <div class="quantity-control">
+                                    <button class="quantity-btn minus">-</button>
+                                    <input type="text" class="quantity-input" value="1" readonly>
+                                    <button class="quantity-btn plus">+</button>
+                                </div>
+                                <button class="add-to-cart">Adicionar</button>
+                            </div>
+                            <button class="finish-order">
+                                <i class="fas fa-shopping-cart"></i> Finalizar Pedido
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="product-card" data-category="presuntos">
+                        <div class="product-img">
+                            <img src="https://images.unsplash.com/photo-1607305387299-a3d9611cd469?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Presunto Serrano">
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-name">Presunto Serrano Espanhol</h3>
+                            <p class="product-description">Presunto espanhol curado nas montanhas, com sabor intenso e textura firme. Curado por 12 meses.</p>
+                            <div class="product-price">149,90</div>
+                            <div class="product-actions">
+                                <div class="quantity-control">
+                                    <button class="quantity-btn minus">-</button>
+                                    <input type="text" class="quantity-input" value="1" readonly>
+                                    <button class="quantity-btn plus">+</button>
+                                </div>
+                                <button class="add-to-cart">Adicionar</button>
+                            </div>
+                            <button class="finish-order">
+                                <i class="fas fa-shopping-cart"></i> Finalizar Pedido
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="product-card" data-category="presuntos">
+                        <div class="product-img">
+                            <img src="https://images.unsplash.com/photo-1607305387299-a3d9611cd469?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Presunto Ibérico">
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-name">Presunto Ibérico de Bellota</h3>
+                            <p class="product-description">Presunto ibérico de porcos alimentados com bolotas. Curado por 36 meses. Sabor excecional.</p>
+                            <div class="product-price">299,90</div>
+                            <div class="product-actions">
+                                <div class="quantity-control">
+                                    <button class="quantity-btn minus">-</button>
+                                    <input type="text" class="quantity-input" value="1" readonly>
+                                    <button class="quantity-btn plus">+</button>
+                                </div>
+                                <button class="add-to-cart">Adicionar</button>
+                            </div>
+                            <button class="finish-order">
+                                <i class="fas fa-shopping-cart"></i> Finalizar Pedido
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="product-card" data-category="presuntos">
+                        <div class="product-img">
+                            <img src="https://images.unsplash.com/photo-1607305387299-a3d9611cd469?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Presunto Cozido">
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-name">Presunto Cozido Premium</h3>
+                            <p class="product-description">Presunto cozido lentamente com especiarias. Textura macia e sabor suave. Ideal para sanduíches.</p>
+                            <div class="product-price">59,90</div>
+                            <div class="product-actions">
+                                <div class="quantity-control">
+                                    <button class="quantity-btn minus">-</button>
+                                    <input type="text" class="quantity-input" value="1" readonly>
+                                    <button class="quantity-btn plus">+</button>
+                                </div>
+                                <button class="add-to-cart">Adicionar</button>
+                            </div>
+                            <button class="finish-order">
+                                <i class="fas fa-shopping-cart"></i> Finalizar Pedido
+                            </button>
+                        </div>
+                    </div>
                 </div>
             </div>
             
             <!-- Categoria Queijos -->
             <div id="queijos" class="category-section">
                 <h3 class="section-title" style="font-size: 2rem; margin-top: 40px;">Queijos</h3>
-                <div class="product-grid" id="queijos-grid">
-                    <!-- Produtos serão inseridos aqui via JavaScript -->
+                <div class="product-grid">
+                    <div class="product-card" data-category="queijos">
+                        <div class="product-img">
+                            <img src="https://images.unsplash.com/photo-1625739800888-a4d7e7b3b2f7?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Queijo Provolone">
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-name">Queijo Provolone Defumado</h3>
+                            <p class="product-description">Queijo italiano defumado lentamente com madeiras nobres. Sabor marcante e textura firme.</p>
+                            <div class="product-price">79,90</div>
+                            <div class="product-actions">
+                                <div class="quantity-control">
+                                    <button class="quantity-btn minus">-</button>
+                                    <input type="text" class="quantity-input" value="1" readonly>
+                                    <button class="quantity-btn plus">+</button>
+                                </div>
+                                <button class="add-to-cart">Adicionar</button>
+                            </div>
+                            <button class="finish-order">
+                                <i class="fas fa-shopping-cart"></i> Finalizar Pedido
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="product-card" data-category="queijos">
+                        <div class="product-img">
+                            <img src="https://images.unsplash.com/photo-1625739800888-a4d7e7b3b2f7?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Queijo Parmesão">
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-name">Queijo Parmesão 24 Meses</h3>
+                            <p class="product-description">Queijo parmesão italiano maturado por 24 meses. Sabor intenso e textura granulada.</p>
+                            <div class="product-price">119,90</div>
+                            <div class="product-actions">
+                                <div class="quantity-control">
+                                    <button class="quantity-btn minus">-</button>
+                                    <input type="text" class="quantity-input" value="1" readonly>
+                                    <button class="quantity-btn plus">+</button>
+                                </div>
+                                <button class="add-to-cart">Adicionar</button>
+                            </div>
+                            <button class="finish-order">
+                                <i class="fas fa-shopping-cart"></i> Finalizar Pedido
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="product-card" data-category="queijos">
+                        <div class="product-img">
+                            <img src="https://images.unsplash.com/photo-1625739800888-a4d7e7b3b2f7?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Queijo Gorgonzola">
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-name">Queijo Gorgonzola Picante</h3>
+                            <p class="product-description">Queijo azul italiano com sabor picante e textura cremosa. Maturado por 90 dias.</p>
+                            <div class="product-price">99,90</div>
+                            <div class="product-actions">
+                                <div class="quantity-control">
+                                    <button class="quantity-btn minus">-</button>
+                                    <input type="text" class="quantity-input" value="1" readonly>
+                                    <button class="quantity-btn plus">+</button>
+                                </div>
+                                <button class="add-to-cart">Adicionar</button>
+                            </div>
+                            <button class="finish-order">
+                                <i class="fas fa-shopping-cart"></i> Finalizar Pedido
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="product-card" data-category="queijos">
+                        <div class="product-img">
+                            <img src="https://images.unsplash.com/photo-1625739800888-a4d7e7b3b2f7?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Queijo Mozzarella">
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-name">Queijo Mozzarella de Búfala</h3>
+                            <p class="product-description">Mozzarella fresca feita com leite de búfala. Textura macia e sabor delicado.</p>
+                            <div class="product-price">54,90</div>
+                            <div class="product-actions">
+                                <div class="quantity-control">
+                                    <button class="quantity-btn minus">-</button>
+                                    <input type="text" class="quantity-input" value="1" readonly>
+                                    <button class="quantity-btn plus">+</button>
+                                </div>
+                                <button class="add-to-cart">Adicionar</button>
+                            </div>
+                            <button class="finish-order">
+                                <i class="fas fa-shopping-cart"></i> Finalizar Pedido
+                            </button>
+                        </div>
+                    </div>
                 </div>
             </div>
             
             <!-- Categoria Acompanhamentos -->
             <div id="acomp" class="category-section">
                 <h3 class="section-title" style="font-size: 2rem; margin-top: 40px;">Acompanhamentos</h3>
-                <div class="product-grid" id="acomp-grid">
-                    <!-- Produtos serão inseridos aqui via JavaScript -->
+                <div class="product-grid">
+                    <div class="product-card" data-category="acomp">
+                        <div class="product-img">
+                            <img src="https://images.unsplash.com/photo-1486475594124-0d6b7aca5d6b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Azeitonas">
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-name">Mix de Azeitonas Premium</h3>
+                            <p class="product-description">Seleção de azeitonas verdes e pretas, temperadas com ervas finas e azeite extra virgem.</p>
+                            <div class="product-price">39,90</div>
+                            <div class="product-actions">
+                                <div class="quantity-control">
+                                    <button class="quantity-btn minus">-</button>
+                                    <input type="text" class="quantity-input" value="1" readonly>
+                                    <button class="quantity-btn plus">+</button>
+                                </div>
+                                <button class="add-to-cart">Adicionar</button>
+                            </div>
+                            <button class="finish-order">
+                                <i class="fas fa-shopping-cart"></i> Finalizar Pedido
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="product-card" data-category="acomp">
+                        <div class="product-img">
+                            <img src="https://images.unsplash.com/photo-1590502593747-42a996133562?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Pães">
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-name">Cesta de Pães Artesanais</h3>
+                            <p class="product-description">Seleção de pães artesanais: ciabatta, baguete, pão de nozes e pão azeitona.</p>
+                            <div class="product-price">49,90</div>
+                            <div class="product-actions">
+                                <div class="quantity-control">
+                                    <button class="quantity-btn minus">-</button>
+                                    <input type="text" class="quantity-input" value="1" readonly>
+                                    <button class="quantity-btn plus">+</button>
+                                </div>
+                                <button class="add-to-cart">Adicionar</button>
+                            </div>
+                            <button class="finish-order">
+                                <i class="fas fa-shopping-cart"></i> Finalizar Pedido
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="product-card" data-category="acomp">
+                        <div class="product-img">
+                            <img src="https://images.unsplash.com/photo-1478369402113-1fd53f17e8b4?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Geleias">
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-name">Geleia de Pimenta Vermelha</h3>
+                            <p class="product-description">Geleia artesanal de pimenta vermelha, perfeita para acompanhar queijos e presuntos.</p>
+                            <div class="product-price">29,90</div>
+                            <div class="product-actions">
+                                <div class="quantity-control">
+                                    <button class="quantity-btn minus">-</button>
+                                    <input type="text" class="quantity-input" value="1" readonly>
+                                    <button class="quantity-btn plus">+</button>
+                                </div>
+                                <button class="add-to-cart">Adicionar</button>
+                            </div>
+                            <button class="finish-order">
+                                <i class="fas fa-shopping-cart"></i> Finalizar Pedido
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="product-card" data-category="acomp">
+                        <div class="product-img">
+                            <img src="https://images.unsplash.com/photo-1556910103-1c02745aae4a?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Mel">
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-name">Mel com Ervas Finas</h3>
+                            <p class="product-description">Mel artesanal infundido com alecrim, tomilho e lavanda. Perfeito para queijos e torradas.</p>
+                            <div class="product-price">34,90</div>
+                            <div class="product-actions">
+                                <div class="quantity-control">
+                                    <button class="quantity-btn minus">-</button>
+                                    <input type="text" class="quantity-input" value="1" readonly>
+                                    <button class="quantity-btn plus">+</button>
+                                </div>
+                                <button class="add-to-cart">Adicionar</button>
+                            </div>
+                            <button class="finish-order">
+                                <i class="fas fa-shopping-cart"></i> Finalizar Pedido
+                            </button>
+                        </div>
+                    </div>
                 </div>
             </div>
             
-            <!-- Categoria Kits Especiais -->
+            <!-- Categoria Kits -->
             <div id="kits" class="category-section">
-                <h3 class="section-title" style="font-size: 2rem; margin-top: 40px;">Kits Especiais</h3>
-                <div class="product-grid" id="kits-grid">
-                    <!-- Produtos serão inseridos aqui via JavaScript -->
+                <h3 class="section-title" style="font-size: 2rem; margin-top: 40px;">Kits</h3>
+                <div class="product-grid">
+                    <div class="product-card" data-category="kits">
+                        <div class="product-img">
+                            <img src="https://images.unsplash.com/photo-1486475594124-0d6b7aca5d6b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Kit Premium">
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-name">Kit Degustação Premium</h3>
+                            <p class="product-description">Seleção especial com 3 tipos de salames, 2 queijos e azeitonas. Perfeito para presentear.</p>
+                            <div class="product-price">199,90</div>
+                            <div class="product-actions">
+                                <div class="quantity-control">
+                                    <button class="quantity-btn minus">-</button>
+                                    <input type="text" class="quantity-input" value="1" readonly>
+                                    <button class="quantity-btn plus">+</button>
+                                </div>
+                                <button class="add-to-cart">Adicionar</button>
+                            </div>
+                            <button class="finish-order">
+                                <i class="fas fa-shopping-cart"></i> Finalizar Pedido
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="product-card" data-category="kits">
+                        <div class="product-img">
+                            <img src="https://images.unsplash.com/photo-1596797038534-2a67ed6df61c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Kit Italiano">
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-name">Kit Italiano Tradicional</h3>
+                            <p class="product-description">Salame italiano, presunto Parma, queijo provolone e azeitonas. Tudo o que precisa para uma tábua italiana.</p>
+                            <div class="product-price">169,90</div>
+                            <div class="product-actions">
+                                <div class="quantity-control">
+                                    <button class="quantity-btn minus">-</button>
+                                    <input type="text" class="quantity-input" value="1" readonly>
+                                    <button class="quantity-btn plus">+</button>
+                                </div>
+                                <button class="add-to-cart">Adicionar</button>
+                            </div>
+                            <button class="finish-order">
+                                <i class="fas fa-shopping-cart"></i> Finalizar Pedido
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="product-card" data-category="kits">
+                        <div class="product-img">
+                            <img src="https://images.unsplash.com/photo-1556910103-1c02745aae4a?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Kit Espanhol">
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-name">Kit Espanhol Autêntico</h3>
+                            <p class="product-description">Presunto serrano, salame espanhol, queijo manchego e azeitonas verdes. Sabores da Espanha.</p>
+                            <div class="product-price">189,90</div>
+                            <div class="product-actions">
+                                <div class="quantity-control">
+                                    <button class="quantity-btn minus">-</button>
+                                    <input type="text" class="quantity-input" value="1" readonly>
+                                    <button class="quantity-btn plus">+</button>
+                                </div>
+                                <button class="add-to-cart">Adicionar</button>
+                            </div>
+                            <button class="finish-order">
+                                <i class="fas fa-shopping-cart"></i> Finalizar Pedido
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="product-card" data-category="kits">
+                        <div class="product-img">
+                            <img src="https://images.unsplash.com/photo-1590502593747-42a996133562?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Kit de Queijos">
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-name">Kit Degustação de Queijos</h3>
+                            <p class="product-description">Seleção com 4 queijos diferentes: brie, gorgonzola, provolone, parmesão e coalho.</p>
+                            <div class="product-price">149,90</div>
+                            <div class="product-actions">
+                                <div class="quantity-control">
+                                    <button class="quantity-btn minus">-</button>
+                                    <input type="text" class="quantity-input" value="1" readonly>
+                                    <button class="quantity-btn plus">+</button>
+                                </div>
+                                <button class="add-to-cart">Adicionar</button>
+                            </div>
+                            <button class="finish-order">
+                                <i class="fas fa-shopping-cart"></i> Finalizar Pedido
+                            </button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
-
-    <!-- Seção Sobre -->
-    <section id="about" class="about">
-        <div class="container">
-            <div class="about-content">
-                <div class="about-text">
-                    <h2>Sobre Nossa Empresa</h2>
-                    <p>Há mais de 20 anos produzindo salames artesanais com a mesma receita de família, utilizando apenas os melhores ingredientes e seguindo rigorosos padrões de qualidade.</p>
-                    <p>Nossa maturação lenta e natural garante um sabor inigualável, que conquistou clientes em todo o país.</p>
-                    <a href="#contact" class="btn">Entre em Contato</a>
-                </div>
-                <div class="about-img">
-                    <img src="https://images.unsplash.com/photo-1603133872878-684f208fb84b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Sobre nossa empresa">
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Seção Contato -->
-    <section id="contact" class="contact">
-        <div class="container">
-            <h2 class="section-title">Entre em Contato</h2>
-            <div class="contact-content">
-                <div class="contact-form">
-                    <form id="contact-form">
-                        <div class="form-group">
-                            <label for="name">Nome</label>
-                            <input type="text" id="name" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="email">E-mail</label>
-                            <input type="email" id="email" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="message">Mensagem</label>
-                            <textarea id="message" rows="5" required></textarea>
-                        </div>
-                        <button type="submit" class="btn">Enviar Mensagem</button>
-                    </form>
-                </div>
-                <div class="contact-info">
-                    <div class="contact-item">
-                        <i class="fas fa-map-marker-alt"></i>
-                        <p>Rua dos Salames, 123, Centro<br>Salame City, SC</p>
-                    </div>
-                    <div class="contact-item">
-                        <i class="fas fa-phone"></i>
-                        <p>(47) 9999-8888</p>
-                    </div>
-                    <div class="contact-item">
-                        <i class="fas fa-envelope"></i>
-                        <p>contato@salamesartesanais.com.br</p>
-                    </div>
-                    <div class="social-links">
-                        <a href="#"><i class="fab fa-facebook"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-whatsapp"></i></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Rodapé -->
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-logo">
-                    <h2>Salames Artesanais</h2>
-                    <p>Os melhores salames desde 2000</p>
-                </div>
-                <div class="footer-links">
-                    <h3>Links Rápidos</h3>
-                    <ul>
-                        <li><a href="#home">Início</a></li>
-                        <li><a href="#products">Produtos</a></li>
-                        <li><a href="#about">Sobre</a></li>
-                        <li><a href="#contact">Contato</a></li>
-                    </ul>
-                </div>
-                <div class="footer-newsletter">
-                    <h3>Newsletter</h3>
-                    <p>Inscreva-se para receber ofertas especiais</p>
-                    <form id="newsletter-form">
-                        <input type="email" placeholder="Seu e-mail" required>
-                        <button type="submit">Inscrever</button>
-                    </form>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2023 Salames Artesanais. Todos os direitos reservados.</p>
-            </div>
-        </div>
-    </footer>
-
-    <!-- Overlay do Carrinho -->
-    <div class="cart-overlay" id="cart-overlay">
+    
+    <div class="cart-overlay">
         <div class="cart">
             <div class="cart-header">
-                <h3>Seu Carrinho</h3>
-                <button class="close-cart" id="close-cart">
+                <h3 class="cart-title">Seu Carrinho</h3>
+                <button class="close-cart">
                     <i class="fas fa-times"></i>
                 </button>
             </div>
-            <div class="cart-items" id="cart-items">
-                <!-- Itens do carrinho serão inseridos aqui via JavaScript -->
+            
+            <div class="cart-items">
+                <!-- Os itens do carrinho serão inseridos aqui via JavaScript -->
             </div>
+            
             <div class="cart-footer">
                 <div class="cart-total">
                     <span>Total:</span>
-                    <span id="cart-total">R$ 0,00</span>
+                    <span>R$ 0,00</span>
                 </div>
-                <button class="btn checkout-btn">Finalizar Compra</button>
+                <div class="cart-actions">
+                    <button class="checkout-btn">Finalizar Compra</button>
+                    <button class="clear-cart-btn">Limpar</button>
+                </div>
+            </div>
+            
+            <div class="checkout-form">
+                <button class="back-to-cart">
+                    <i class="fas fa-arrow-left"></i> Voltar ao Carrinho
+                </button>
+                
+                <div class="form-group">
+                    <label class="form-label" for="name">Nome Completo</label>
+                    <input type="text" id="name" class="form-input" placeholder="Seu nome completo">
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label" for="phone">Telefone</label>
+                    <input type="text" id="phone" class="form-input" placeholder="(00) 00000-0000">
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label" for="address">Endereço de Entrega</label>
+                    <textarea id="address" class="form-textarea" placeholder="Rua, número, bairro, complemento..."></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label" for="reference">Ponto de Referência</label>
+                    <textarea id="reference" class="form-textarea" placeholder="Ponto de referência para facilitar a entrega..."></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">Forma de Pagamento</label>
+                    <div class="payment-options">
+                        <div class="payment-option">
+                            <input type="radio" id="payment-dinheiro" name="payment" value="Dinheiro">
+                            <label for="payment-dinheiro">
+                                <i class="fas fa-money-bill-wave"></i> Dinheiro
+                            </label>
+                        </div>
+                        <div class="payment-option">
+                            <input type="radio" id="payment-cartao" name="payment" value="Cartão">
+                            <label for="payment-cartao">
+                                <i class="fas fa-credit-card"></i> Cartão
+                            </label>
+                        </div>
+                        <div class="payment-option">
+                            <input type="radio" id="payment-pix" name="payment" value="PIX">
+                            <label for="payment-pix">
+                                <i class="fas fa-qrcode"></i> PIX
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                
+                <button class="submit-order">
+                    <i class="fab fa-whatsapp"></i> Finalizar Pedido via WhatsApp
+                </button>
             </div>
         </div>
     </div>
-
-    <!-- Notificação -->
-    <div class="notification" id="notification">
-        <p id="notification-text"></p>
+    
+    <div class="notification">
+        <i class="fas fa-check-circle"></i>
+        <span>Produto adicionado ao carrinho!</span>
     </div>
+    
+    <!-- Botão WhatsApp Flutuante -->
+    <a href="https://wa.me/5511999999999?text=Olá!%20Gostaria%20de%20fazer%20um%20pedido%20de%20produtos%20da%20Charcutaria%20Artesanal." 
+       class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+    
+    <!-- Tooltip para o botão WhatsApp -->
+    <div class="whatsapp-tooltip">Fale conosco pelo WhatsApp</div>
+    
+    <!-- Rodapé -->
+    <footer>
+        <div class="footer-image"></div>
+        <div class="container footer-content">
+            <div class="footer-grid">
+                <div class="footer-section">
+                    <h3>Sobre Nós</h3>
+                    <p>A Charcutaria Artesanal oferece produtos de alta qualidade, feitos com técnicas tradicionais e ingredientes selecionados para proporcionar uma experiência gastronômica única.</p>
+                    <a href="#trabalhe-conosco" class="work-with-us">
+                        <i class="fas fa-briefcase"></i> Trabalhe Conosco
+                    </a>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Contato</h3>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt"></i> Rua dos Sabores, 123 - Centro</li>
+                        <li><i class="fas fa-phone"></i> (11) 1234-5678</li>
+                        <li><i class="fas fa-envelope"></i> contato@charcutariaartesanal.com.br</li>
+                        <li><i class="fas fa-clock"></i> Seg-Sex: 9h às 18h | Sáb: 9h às 14h</li>
+                    </ul>
+                </div>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Variáveis globais
-            const cartIcon = document.getElementById('cart-icon');
-            const cartCount = document.getElementById('cart-count');
-            const cartOverlay = document.getElementById('cart-overlay');
-            const closeCart = document.getElementById('close-cart');
-            const cartItems = document.getElementById('cart-items');
-            const cartTotal = document.getElementById('cart-total');
-            const notification = document.getElementById('notification');
-            const notificationText = document.getElementById('notification-text');
-            
-            // Carrinho de compras
-            let cart = [];
-            
-            // Função para renderizar produtos
-            function renderizarProdutos() {
-                // Limpar grids
-                document.querySelectorAll('.product-grid').forEach(grid => {
-                    grid.innerHTML = '';
-                });
                 
-                // Renderizar cada produto
-                produtos.forEach(produto => {
-                    const produtoHTML = `
-                        <div class="product-card" data-categoria="${produto.categoria}" data-id="${produto.id}">
-                            <div class="product-img">
-                                <img src="${produto.imagem}" alt="${produto.nome}">
-                            </div>
-                            <div class="product-info">
-                                <h3 class="product-name">${produto.nome}</h3>
-                                <p class="product-description">${produto.descricao}</p>
-                                <div class="product-price">R$ ${produto.preco.toFixed(2).replace('.', ',')}</div>
-                                <div class="product-actions">
-                                    <div class="quantity-control">
-                                        <button class="quantity-btn minus">-</button>
-                                        <input type="text" class="quantity-input" value="1" readonly>
-                                        <button class="quantity-btn plus">+</button>
-                                    </div>
-                                    <button class="add-to-cart">Adicionar</button>
-                                </div>
-                                <button class="finish-order">
-                                    <i class="fas fa-shopping-cart"></i> Finalizar Pedido
-                                </button>
-                            </div>
-                        </div>
-                    `;
-                    
-                    // Adicionar ao grid da categoria correspondente
-                    const grid = document.getElementById(`${produto.categoria}-grid`);
-                    if (grid) {
-                        grid.insertAdjacentHTML('beforeend', produtoHTML);
-                    }
-                });
-                
-                // Adicionar event listeners aos novos produtos
-                adicionarEventListenersProdutos();
-            }
+                <div class="footer-section">
+                    <h3>Siga-nos</h3>
+                    <p>Acompanhe nossas novidades e promoções nas redes sociais.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
             
-            // Função para adicionar event listeners aos produtos
-            function adicionarEventListenersProdutos() {
-                // Event listeners para botões de quantidade
-                document.querySelectorAll('.quantity-btn').forEach(button => {
-                    button.addEventListener('click', function() {
-                        const input = this.parentElement.querySelector('.quantity-input');
-                        let value = parseInt(input.value);
-                        
-                        if (this.classList.contains('minus') && value > 1) {
-                            value--;
-                        } else if (this.classList.contains('plus')) {
-                            value++;
-                        }
-                        
-                        input.value = value;
-                    });
-                });
-                
-                // Event listeners para botões "Adicionar ao carrinho"
-                document.querySelectorAll('.add-to-cart').forEach(button => {
-                    button.addEventListener('click', function() {
-                        const productCard = this.closest('.product-card');
-                        const productId = parseInt(productCard.getAttribute('data-id'));
-                        const produto = produtos.find(p => p.id === productId);
-                        const quantity = parseInt(productCard.querySelector('.quantity-input').value);
-                        
-                        // Verificar se o produto já está no carrinho
-                        const existingProduct = cart.find(item => item.id === productId);
-                        
-                        if (existingProduct) {
-                            existingProduct.quantity += quantity;
-                        } else {
-                            cart.push({
-                                id: produto.id,
-                                name: produto.nome,
-                                price: produto.preco,
-                                quantity: quantity
-                            });
-                        }
-                        
-                        // Resetar quantidade
-                        productCard.querySelector('.quantity-input').value = 1;
-                        
-                        // Atualizar carrinho
-                        updateCart();
-                        
-                        // Adicionar animação ao ícone do carrinho
-                        cartIcon.classList.add('shake');
-                        cartCount.classList.add('bounce');
-                        
-                        // Remover classes de animação após a conclusão
-                        setTimeout(() => {
-                            cartIcon.classList.remove('shake');
-                            cartCount.classList.remove('bounce');
-                        }, 500);
-                        
-                        // Mostrar notificação
-                        showNotification('Produto adicionado ao carrinho!');
-                    });
-                });
-                
-                // Event listeners para botões "Finalizar Pedido"
-                document.querySelectorAll('.finish-order').forEach(button => {
-                    button.addEventListener('click', function() {
-                        cartOverlay.classList.add('active');
-                        renderCart();
-                    });
-                });
-            }
-            
-            // Função para atualizar o carrinho
-            function updateCart() {
-                // Atualizar contador
-                let totalItems = 0;
-                cart.forEach(item => {
-                    totalItems += item.quantity;
-                });
-                cartCount.textContent = totalItems;
-                
-                // Atualizar total
-                let totalPrice = 0;
-                cart.forEach(item => {
-                    totalPrice += item.price * item.quantity;
-                });
-                cartTotal.textContent = `R$ ${totalPrice.toFixed(2).replace('.', ',')}`;
-            }
-            
-            // Função para renderizar o carrinho
-            function renderCart() {
-                cartItems.innerHTML = '';
-                
-                if (cart.length === 0) {
-                    cartItems.innerHTML = '<p class="empty-cart">Seu carrinho está vazio</p>';
-                } else {
-                    cart.forEach(item => {
-                        const cartItem = document.createElement('div');
-                        cartItem.className = 'cart-item';
-                        cartItem.innerHTML = `
-                            <div class="cart-item-info">
-                                <h4>${item.name}</h4>
-                                <p>R$ ${item.price.toFixed(2).replace('.', ',')} x ${item.quantity}</p>
-                            </div>
-                            <div class="cart-item-price">
-                                R$ ${(item.price * item.quantity).toFixed(2).replace('.', ',')}
-                            </div>
-                            <button class="remove-item" data-id="${item.id}">
-                                <i class="fas fa-trash"></i>
-                            </button>
-                        `;
-                        cartItems.appendChild(cartItem);
-                    });
-                    
-                    // Adicionar event listeners para remover itens
-                    document.querySelectorAll('.remove-item').forEach(button => {
-                        button.addEventListener('click', function() {
-                            const itemId = parseInt(this.getAttribute('data-id'));
-                            cart = cart.filter(item => item.id !== itemId);
-                            updateCart();
-                            renderCart();
-                            showNotification('Item removido do carrinho!');
-                        });
-                    });
-                }
-                
-                updateCart();
-            }
-            
-            // Função para mostrar notificação
-            function showNotification(message) {
-                notificationText.textContent = message;
-                notification.classList.add('show');
-                
-                setTimeout(() => {
-                    notification.classList.remove('show');
-                }, 3000);
-            }
-            
-            // Event listeners
-            cartIcon.addEventListener('click', function() {
-                cartOverlay.classList.add('active');
-                renderCart();
-            });
-            
-            closeCart.addEventListener('click', function() {
-                cartOverlay.classList.remove('active');
-            });
-            
-            cartOverlay.addEventListener('click', function(e) {
-                if (e.target === cartOverlay) {
-                    cartOverlay.classList.remove('active');
-                }
-            });
-            
-            // Filtro de categorias
-            document.querySelectorAll('.category-item').forEach(item => {
-                item.addEventListener('click', function() {
-                    // Remover classe active de todos os itens
-                    document.querySelectorAll('.category-item').forEach(i => {
-                        i.classList.remove('active');
-                    });
-                    
-                    // Adicionar classe active ao item clicado
-                    this.classList.add('active');
-                    
-                    const category = this.getAttribute('data-category');
-                    
-                    if (category === 'todos') {
-                        // Mostrar todas as categorias
-                        document.querySelectorAll('.category-section').forEach(section => {
-                            section.style.display = 'block';
-                        });
-                    } else {
-                        // Esconder todas as categorias
-                        document.querySelectorAll('.category-section').forEach(section => {
-                            section.style.display = 'none';
-                        });
-                        
-                        // Mostrar apenas a categoria selecionada
-                        const selectedCategory = document.getElementById(category);
-                        if (selectedCategory) {
-                            selectedCategory.style.display = 'block';
-                        }
-                    }
-                });
-            });
-            
-            // Formulário de contato
-            document.getElementById('contact-form').addEventListener('submit', function(e) {
-                e.preventDefault();
-                showNotification('Mensagem enviada com sucesso! Entraremos em contato em breve.');
-                this.reset();
-            });
-            
-            // Formulário de newsletter
-            document.getElementById('newsletter-form').addEventListener('submit', function(e) {
-                e.preventDefault();
-                showNotification('Inscrição realizada com sucesso! Obrigado por se inscrever.');
-                this.reset();
-            });
-            
-            // Renderizar produtos ao carregar a página
-            renderizarProdutos();
-        });
-    </script>
+            <div class="footer-bottom">
+                <p>© 2023 Charcutaria Artesanal. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+    
+    <script src="produtos.js"></script>
 </body>
 </html>

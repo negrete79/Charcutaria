@@ -1,4 +1,3 @@
-/* ===== ESTILOS GERAIS ===== */
 * {
     margin: 0;
     padding: 0;
@@ -15,6 +14,7 @@
     --gray: #F8E6E6; /* Cinza com toque de vermelho */
     --success: #4CAF50;
     --danger: #F44336;
+    --whatsapp: #25D366;
 }
 
 body {
@@ -46,30 +46,6 @@ body::before {
     padding: 0 15px;
 }
 
-.section-title {
-    text-align: center;
-    margin-bottom: 50px;
-    font-size: 2.5rem;
-    color: var(--primary);
-    font-weight: 700;
-    position: relative;
-    display: inline-block;
-    width: 100%;
-}
-
-.section-title::after {
-    content: '';
-    position: absolute;
-    bottom: -15px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 80px;
-    height: 4px;
-    background-color: var(--accent);
-    border-radius: 2px;
-}
-
-/* ===== CABEÇALHO ===== */
 header {
     background-color: white;
     box-shadow: 0 4px 20px rgba(139, 0, 0, 0.1);
@@ -114,24 +90,38 @@ header {
     transform: scale(1.1);
 }
 
+/* Animação de pulso no carrinho */
 .cart-icon:hover i {
     animation: pulse 1.5s infinite;
 }
 
 @keyframes pulse {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.2); }
-    100% { transform: scale(1); }
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.2);
+    }
+    100% {
+        transform: scale(1);
+    }
 }
 
+/* Animação de balanço quando item é adicionado */
 .cart-icon.shake i {
     animation: shake 0.5s ease-in-out;
 }
 
 @keyframes shake {
-    0%, 100% { transform: rotate(0deg); }
-    25% { transform: rotate(-15deg); }
-    75% { transform: rotate(15deg); }
+    0%, 100% {
+        transform: rotate(0deg);
+    }
+    25% {
+        transform: rotate(-15deg);
+    }
+    75% {
+        transform: rotate(15deg);
+    }
 }
 
 .cart-count {
@@ -151,16 +141,20 @@ header {
     box-shadow: 0 2px 5px rgba(0,0,0,0.2);
 }
 
+/* Animação na contagem do carrinho */
 .cart-count.bounce {
     animation: bounce 0.5s ease-in-out;
 }
 
 @keyframes bounce {
-    0%, 100% { transform: scale(1); }
-    50% { transform: scale(1.3); }
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.3);
+    }
 }
 
-/* ===== BARRA DE CATEGORIAS ===== */
 .categories-bar {
     background-color: var(--primary);
     padding: 0;
@@ -212,7 +206,6 @@ header {
     width: 100%;
 }
 
-/* ===== BANNER/SLIDER ===== */
 .banner {
     position: relative;
     height: 550px;
@@ -238,6 +231,7 @@ header {
     transition: opacity 1.5s ease-in-out;
     background-size: cover;
     background-position: center;
+    /* Adicionado para melhorar a nitidez das imagens */
     image-rendering: -webkit-optimize-contrast;
     image-rendering: crisp-edges;
 }
@@ -252,6 +246,7 @@ header {
     left: 0;
     width: 100%;
     height: 100%;
+    /* Alterado o gradiente para ser mais sutil e não atrapalhar a imagem */
     background: linear-gradient(135deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.2));
     display: flex;
     align-items: center;
@@ -304,6 +299,10 @@ header {
     box-shadow: 0 6px 20px rgba(255, 107, 107, 0.5);
 }
 
+.scroll-to-products i {
+    font-size: 1.2rem;
+}
+
 .slider-nav {
     position: absolute;
     bottom: 30px;
@@ -328,7 +327,6 @@ header {
     transform: scale(1.2);
 }
 
-/* ===== SEÇÃO DE PRODUTOS ===== */
 .products {
     padding: 60px 0;
     background-color: white;
@@ -347,6 +345,30 @@ header {
     height: 100%;
     background-color: rgba(255, 255, 255, 0.92);
     z-index: 0;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 50px;
+    font-size: 2.5rem;
+    color: var(--primary);
+    font-weight: 700;
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    z-index: 1;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background-color: var(--accent);
+    border-radius: 2px;
 }
 
 .product-grid {
@@ -393,6 +415,7 @@ header {
     height: 100%;
     object-fit: cover;
     transition: transform 0.7s;
+    /* Adicionado para melhorar a nitidez das imagens */
     image-rendering: -webkit-optimize-contrast;
     image-rendering: crisp-edges;
 }
@@ -522,7 +545,6 @@ header {
     box-shadow: 0 6px 20px rgba(76, 175, 80, 0.4);
 }
 
-/* ===== CARRINHO DE COMPRAS ===== */
 .cart-overlay {
     position: fixed;
     top: 0;
@@ -679,7 +701,6 @@ header {
     transform: translateY(-2px);
 }
 
-/* ===== FORMULÁRIO DE CHECKOUT ===== */
 .checkout-form {
     padding: 25px;
     display: none;
@@ -827,7 +848,7 @@ header {
     background-color: #555;
 }
 
-/* ===== BARRA DE ROLAGEM ===== */
+/* Estilos para a barra de rolagem */
 .cart-items::-webkit-scrollbar,
 .checkout-form::-webkit-scrollbar {
     width: 8px;
@@ -850,7 +871,6 @@ header {
     background: var(--secondary);
 }
 
-/* ===== NOTIFICAÇÃO ===== */
 .notification {
     position: fixed;
     bottom: 30px;
@@ -878,7 +898,98 @@ header {
     font-size: 20px;
 }
 
-/* ===== RODAPÉ ===== */
+/* Botão WhatsApp Flutuante com Animações */
+.whatsapp-float {
+    position: fixed;
+    width: 60px;
+    height: 60px;
+    bottom: 40px;
+    right: 40px;
+    background-color: var(--whatsapp);
+    color: #FFF;
+    border-radius: 50px;
+    text-align: center;
+    font-size: 30px;
+    box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.4);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    transition: all 0.4s ease;
+    animation: tremor 2s infinite, balanca 3s infinite, flutuar 4s ease-in-out infinite;
+}
+
+.whatsapp-float:hover {
+    background-color: #128C7E;
+    transform: scale(1.1);
+    animation: none;
+}
+
+/* Animação de tremor */
+@keyframes tremor {
+    0% { transform: translate(1px, 1px) rotate(0deg); }
+    10% { transform: translate(-1px, -2px) rotate(-1deg); }
+    20% { transform: translate(-3px, 0px) rotate(1deg); }
+    30% { transform: translate(3px, 2px) rotate(0deg); }
+    40% { transform: translate(1px, -1px) rotate(1deg); }
+    50% { transform: translate(-1px, 2px) rotate(-1deg); }
+    60% { transform: translate(-3px, 1px) rotate(0deg); }
+    70% { transform: translate(3px, 1px) rotate(-1deg); }
+    80% { transform: translate(-1px, -1px) rotate(1deg); }
+    90% { transform: translate(1px, 2px) rotate(0deg); }
+    100% { transform: translate(1px, -2px) rotate(-1deg); }
+}
+
+/* Animação de balanço */
+@keyframes balanca {
+    0% { transform: rotate(0deg); }
+    25% { transform: rotate(5deg); }
+    50% { transform: rotate(0deg); }
+    75% { transform: rotate(-5deg); }
+    100% { transform: rotate(0deg); }
+}
+
+/* Animação de flutuar */
+@keyframes flutuar {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0px); }
+}
+
+/* Tooltip para o botão WhatsApp */
+.whatsapp-tooltip {
+    position: fixed;
+    bottom: 110px;
+    right: 40px;
+    background-color: #333;
+    color: white;
+    padding: 8px 12px;
+    border-radius: 8px;
+    font-size: 14px;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    z-index: 999;
+    white-space: nowrap;
+}
+
+.whatsapp-tooltip::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    right: 20px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #333 transparent transparent transparent;
+}
+
+.whatsapp-float:hover + .whatsapp-tooltip {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Rodapé */
 footer {
     background-color: var(--dark);
     color: white;
@@ -924,4 +1035,258 @@ footer {
     position: absolute;
     bottom: -10px;
     left: 0;
-    width: 50
+    width: 50px;
+    height: 3px;
+    background-color: var(--accent);
+}
+
+.footer-section p, .footer-section li {
+    margin-bottom: 10px;
+    line-height: 1.6;
+}
+
+.footer-section ul {
+    list-style: none;
+}
+
+.footer-section a {
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.footer-section a:hover {
+    color: var(--accent);
+}
+
+.social-links {
+    display: flex;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.social-links a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    transition: all 0.3s;
+}
+
+.social-links a:hover {
+    background-color: var(--accent);
+    transform: translateY(-3px);
+}
+
+.work-with-us {
+    background-color: var(--accent);
+    color: white;
+    padding: 15px 30px;
+    border-radius: 30px;
+    font-weight: 700;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    transition: all 0.3s;
+    margin-top: 20px;
+    box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3);
+}
+
+.work-with-us:hover {
+    background-color: var(--primary);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(255, 107, 107, 0.4);
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 30px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    font-size: 0.9rem;
+}
+
+/* Responsividade */
+@media (max-width: 992px) {
+    .banner h1 {
+        font-size: 2.8rem;
+    }
+    
+    .banner p {
+        font-size: 1.1rem;
+    }
+    
+    .product-grid {
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    .header-content {
+        padding: 10px 0;
+    }
+    
+    .logo {
+        font-size: 22px;
+    }
+    
+    .logo i {
+        font-size: 26px;
+    }
+    
+    .categories-bar {
+        top: 70px;
+    }
+    
+    .banner {
+        height: 450px;
+        margin-top: 70px;
+    }
+    
+    .banner h1 {
+        font-size: 2.2rem;
+    }
+    
+    .banner p {
+        font-size: 1rem;
+    }
+    
+    .scroll-to-products {
+        padding: 12px 24px;
+        font-size: 1rem;
+    }
+    
+    .section-title {
+        font-size: 2rem;
+    }
+    
+    .product-grid {
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        gap: 15px;
+    }
+    
+    .product-info {
+        padding: 15px;
+    }
+    
+    .product-name {
+        font-size: 1.1rem;
+    }
+    
+    .product-price {
+        font-size: 1.3rem;
+    }
+    
+    .cart {
+        width: 95%;
+        max-height: 90vh;
+    }
+    
+    .cart-title {
+        font-size: 1.4rem;
+    }
+    
+    .cart-total {
+        font-size: 1.2rem;
+    }
+    
+    .payment-options {
+        flex-direction: column;
+    }
+    
+    .payment-option {
+        min-width: 100%;
+    }
+    
+    .notification {
+        bottom: 20px;
+        right: 20px;
+        left: 20px;
+        padding: 12px 20px;
+    }
+    
+    .whatsapp-float {
+        width: 55px;
+        height: 55px;
+        bottom: 30px;
+        right: 30px;
+        font-size: 28px;
+    }
+    
+    .whatsapp-tooltip {
+        bottom: 95px;
+        right: 30px;
+        font-size: 12px;
+    }
+    
+    .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+}
+
+@media (max-width: 576px) {
+    .logo {
+        font-size: 18px;
+    }
+    
+    .logo i {
+        font-size: 22px;
+    }
+    
+    .banner {
+        height: 380px;
+    }
+    
+    .banner h1 {
+        font-size: 1.8rem;
+    }
+    
+    .banner p {
+        font-size: 0.9rem;
+    }
+    
+    .section-title {
+        font-size: 1.8rem;
+    }
+    
+    .product-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .product-actions {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .quantity-control {
+        width: 100%;
+        justify-content: center;
+    }
+    
+    .add-to-cart {
+        width: 100%;
+    }
+    
+    .cart-actions {
+        flex-direction: column;
+    }
+    
+    .whatsapp-float {
+        width: 50px;
+        height: 50px;
+        bottom: 20px;
+        right: 20px;
+        font-size: 24px;
+    }
+    
+    .whatsapp-tooltip {
+        bottom: 80px;
+        right: 20px;
+        font-size: 11px;
+    }
+}
