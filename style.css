@@ -1290,3 +1290,117 @@ footer {
         font-size: 11px;
     }
 }
+
+/* Estilos para o QR Code do PIX */
+.pix-qr-container {
+    background-color: #f9f9f9;
+    border-radius: 12px;
+    padding: 20px;
+    margin-top: 20px;
+    border: 1px solid #eee;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+.pix-qr-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    color: var(--primary);
+}
+
+.pix-qr-header i {
+    font-size: 24px;
+    margin-right: 10px;
+}
+
+.pix-qr-header h4 {
+    font-size: 18px;
+    font-weight: 700;
+    margin: 0;
+}
+
+.pix-qr-content {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    align-items: center;
+}
+
+.pix-qr-code {
+    flex: 1;
+    min-width: 200px;
+    text-align: center;
+}
+
+.pix-qr-code img {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 10px;
+    background-color: white;
+    max-width: 100%;
+    height: auto;
+}
+
+.pix-qr-info {
+    flex: 2;
+    min-width: 250px;
+}
+
+.pix-qr-info p {
+    margin-bottom: 10px;
+    line-height: 1.5;
+}
+
+.pix-qr-info strong {
+    color: var(--dark);
+}
+
+.pix-instructions {
+    font-size: 14px;
+    color: #666;
+    margin-top: 15px;
+    font-style: italic;
+}
+
+.pix-qr-actions {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.copy-pix-btn {
+    background-color: var(--primary);
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 30px;
+    cursor: pointer;
+    font-weight: 700;
+    transition: all 0.3s;
+    font-size: 15px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    box-shadow: 0 4px 15px rgba(139, 0, 0, 0.2);
+}
+
+.copy-pix-btn:hover {
+    background-color: var(--accent);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(139, 0, 0, 0.3);
+}
+
+/* Responsividade para o QR Code do PIX */
+@media (max-width: 768px) {
+    .pix-qr-content {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .pix-qr-info {
+        min-width: 100%;
+    }
+    
+    .pix-qr-code {
+        min-width: 100%;
+    }
+}

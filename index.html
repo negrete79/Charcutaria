@@ -3,11 +3,70 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Elias Costa Negret's">
+    <meta name="copyright" content="© 2023 Elias Costa Negret's. Todos os direitos reservados.">
     <title>Charcutaria Artesanal - Produtos Selecionados</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
+    <!-- Proteção contra cópia -->
+    <script type="text/javascript">
+        document.addEventListener('contextmenu', function(e) {
+            e.preventDefault();
+            alert('© 2023 Elias Costa Negret\'s - Todos os direitos reservados. Cópias não autorizadas acão proibida.');
+        });
+        
+        document.addEventListener('selectstart', function(e) {
+            e.preventDefault();
+        });
+        
+        document.addEventListener('dragstart', function(e) {
+            e.preventDefault();
+        });
+        
+        document.addEventListener('keydown', function(e) {
+            if (e.ctrlKey && (e.keyCode === 67 || e.keyCode === 86 || e.keyCode === 85 || e.keyCode === 83 || e.keyCode === 80)) {
+                e.preventDefault();
+                alert('© 2023 Elias Costa Negret\'s - Todos os direitos reservados. Cópias não autorizadas acão proibida.');
+            }
+        });
+        
+        document.addEventListener('keydown', function(e) {
+            if (e.keyCode === 123) { // F12
+                e.preventDefault();
+                alert('© 2023 Elias Costa Negret\'s - Todos os direitos reservados. Acesso ao desenvolvedor desativado.');
+            }
+            if (e.ctrlKey && e.shiftKey && e.keyCode === 73) { // Ctrl+Shift+I
+                e.preventDefault();
+                alert('© 2023 Elias Costa Negret\'s - Todos os direitos reservados. Acesso ao desenvolvedor desativado.');
+            }
+            if (e.ctrlKey && e.shiftKey && e.keyCode === 74) { // Ctrl+Shift+J
+                e.preventDefault();
+                alert('© 2023 Elias Costa Negret\'s - Todos os direitos reservados. Acesso ao desenvolvedor desativado.');
+            }
+        });
+    </script>
+    <style>
+        body {
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            -webkit-touch-callout: none;
+            -webkit-tap-highlight-color: transparent;
+        }
+        img {
+            -webkit-user-drag: none;
+            -khtml-user-drag: none;
+            -moz-user-drag: none;
+            -o-user-drag: none;
+            user-drag: none;
+        }
+    </style>
 </head>
 <body>
+    <!-- Crédito oculto -->
+    <div style="display:none;">Desenvolvido por Elias Costa Negret's</div>
+    
     <header>
         <div class="container">
             <div class="header-content">
@@ -367,7 +426,7 @@
                 <div class="product-grid">
                     <div class="product-card" data-category="queijos">
                         <div class="product-img">
-                            <img src="https://images.unsplash.com/photo-1607305387299-a3d9611cd469?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Queijo Provolone">
+                            <img src="https://images.unsplash.com/photo-1625739800888-a4d7e7b3b2f7?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Queijo Provolone">
                         </div>
                         <div class="product-info">
                             <h3 class="product-name">Queijo Provolone Defumado</h3>
@@ -389,7 +448,7 @@
                     
                     <div class="product-card" data-category="queijos">
                         <div class="product-img">
-                            <img src="https://images.unsplash.com/photo-1607305387299-a3d9611cd469?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Queijo Parmesão">
+                            <img src="https://images.unsplash.com/photo-1625739800888-a4d7e7b3b2f7?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Queijo Parmesão">
                         </div>
                         <div class="product-info">
                             <h3 class="product-name">Queijo Parmesão 24 Meses</h3>
@@ -411,7 +470,7 @@
                     
                     <div class="product-card" data-category="queijos">
                         <div class="product-img">
-                            <img src="https://images.unsplash.com/photo-1607305387299-a3d9611cd469?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Queijo Gorgonzola">
+                            <img src="https://images.unsplash.com/photo-1625739800888-a4d7e7b3b2f7?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Queijo Gorgonzola">
                         </div>
                         <div class="product-info">
                             <h3 class="product-name">Queijo Gorgonzola Picante</h3>
@@ -433,7 +492,7 @@
                     
                     <div class="product-card" data-category="queijos">
                         <div class="product-img">
-                            <img src="https://images.unsplash.com/photo-1607305387299-a3d9611cd469?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Queijo Mozzarella">
+                            <img src="https://images.unsplash.com/photo-1625739800888-a4d7e7b3b2f7?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Queijo Mozzarella">
                         </div>
                         <div class="product-info">
                             <h3 class="product-name">Queijo Mozzarella de Búfala</h3>
@@ -461,7 +520,7 @@
                 <div class="product-grid">
                     <div class="product-card" data-category="acomp">
                         <div class="product-img">
-                            <img src="https://images.unsplash.com/photo-1607305387299-a3d9611cd469?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Azeitonas">
+                            <img src="https://images.unsplash.com/photo-1486475594124-0d6b7aca5d6b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Azeitonas">
                         </div>
                         <div class="product-info">
                             <h3 class="product-name">Mix de Azeitonas Premium</h3>
@@ -483,7 +542,7 @@
                     
                     <div class="product-card" data-category="acomp">
                         <div class="product-img">
-                            <img src="https://images.unsplash.com/photo-1607305387299-a3d9611cd469?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Pães">
+                            <img src="https://images.unsplash.com/photo-1590502593747-42a996133562?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Pães">
                         </div>
                         <div class="product-info">
                             <h3 class="product-name">Cesta de Pães Artesanais</h3>
@@ -505,7 +564,7 @@
                     
                     <div class="product-card" data-category="acomp">
                         <div class="product-img">
-                            <img src="https://images.unsplash.com/photo-1607305387299-a3d9611cd469?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Geleias">
+                            <img src="https://images.unsplash.com/photo-1478369402113-1fd53f17e8b4?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Geleias">
                         </div>
                         <div class="product-info">
                             <h3 class="product-name">Geleia de Pimenta Vermelha</h3>
@@ -527,7 +586,7 @@
                     
                     <div class="product-card" data-category="acomp">
                         <div class="product-img">
-                            <img src="https://images.unsplash.com/photo-1607305387299-a3d9611cd469?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Mel">
+                            <img src="https://images.unsplash.com/photo-1556910103-1c02745aae4a?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Mel">
                         </div>
                         <div class="product-info">
                             <h3 class="product-name">Mel com Ervas Finas</h3>
@@ -555,7 +614,7 @@
                 <div class="product-grid">
                     <div class="product-card" data-category="kits">
                         <div class="product-img">
-                            <img src="https://images.unsplash.com/photo-1607305387299-a3d9611cd469?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Kit Premium">
+                            <img src="https://images.unsplash.com/photo-1486475594124-0d6b7aca5d6b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Kit Premium">
                         </div>
                         <div class="product-info">
                             <h3 class="product-name">Kit Degustação Premium</h3>
@@ -577,7 +636,7 @@
                     
                     <div class="product-card" data-category="kits">
                         <div class="product-img">
-                            <img src="https://images.unsplash.com/photo-1607305387299-a3d9611cd469?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Kit Italiano">
+                            <img src="https://images.unsplash.com/photo-1596797038534-2a67ed6df61c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Kit Italiano">
                         </div>
                         <div class="product-info">
                             <h3 class="product-name">Kit Italiano Tradicional</h3>
@@ -599,7 +658,7 @@
                     
                     <div class="product-card" data-category="kits">
                         <div class="product-img">
-                            <img src="https://images.unsplash.com/photo-1607305387299-a3d9611cd469?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Kit Espanhol">
+                            <img src="https://images.unsplash.com/photo-1556910103-1c02745aae4a?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Kit Espanhol">
                         </div>
                         <div class="product-info">
                             <h3 class="product-name">Kit Espanhol Autêntico</h3>
@@ -621,7 +680,7 @@
                     
                     <div class="product-card" data-category="kits">
                         <div class="product-img">
-                            <img src="https://images.unsplash.com/photo-1607305387299-a3d9611cd469?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Kit de Queijos">
+                            <img src="https://images.unsplash.com/photo-1590502593747-42a996133562?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Kit de Queijos">
                         </div>
                         <div class="product-info">
                             <h3 class="product-name">Kit Degustação de Queijos</h3>
@@ -715,6 +774,36 @@
                                 <i class="fas fa-qrcode"></i> PIX
                             </label>
                         </div>
+                        <div class="payment-option">
+                            <input type="radio" id="payment-pix-qr" name="payment" value="PIX QR Code">
+                            <label for="payment-pix-qr">
+                                <i class="fas fa-qrcode"></i> PIX QR Code
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Container para o QR Code do PIX -->
+                <div id="pix-qr-container" class="pix-qr-container" style="display: none;">
+                    <div class="pix-qr-header">
+                        <i class="fas fa-qrcode"></i>
+                        <h4>Pagamento via PIX</h4>
+                    </div>
+                    <div class="pix-qr-content">
+                        <div class="pix-qr-code">
+                            <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=00020126330014BR.GOV.BCB.PIX0114+319825171475204.005802BR5920Charcutaria6009Sao Paulo62070503***6304A2C4" alt="QR Code PIX">
+                        </div>
+                        <div class="pix-qr-info">
+                            <p><strong>Chave PIX:</strong> 31982517147</p>
+                            <p><strong>Valor:</strong> <span id="pix-amount">R$ 0,00</span></p>
+                            <p><strong>Destinatário:</strong> Charcutaria Artesanal</p>
+                            <p class="pix-instructions">Escaneie o QR Code acima ou copie a chave PIX para realizar o pagamento.</p>
+                        </div>
+                    </div>
+                    <div class="pix-qr-actions">
+                        <button id="copy-pix-key" class="copy-pix-btn">
+                            <i class="fas fa-copy"></i> Copiar Chave PIX
+                        </button>
                     </div>
                 </div>
                 
@@ -769,14 +858,23 @@
                     <div class="social-links">
                         <a href="#"><i class="fab fa-facebook-f"></i></a>
                         <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab 
+
                         <a href="#"><i class="fab fa-youtube"></i></a>
                     </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Atendimento Rápido</h3>
+                    <p>Fale diretamente conosco pelo WhatsApp para pedidos e dúvidas.</p>
+                    <a href="https://wa.me/5531990852533?text=Ol%C3%A1%20gostaria%20de%20saber%20mais%20sobre%20os%20produtos!" 
+                       class="footer-whatsapp" target="_blank">
+                        <i class="fab fa-whatsapp"></i> Fale Conosco no WhatsApp
+                    </a>
                 </div>
             </div>
             
             <div class="footer-bottom">
-                <p>© 2021 Charcutaria Artesanal. Todos os direitos reservados.</p>
+                <p>© 2023 Charcutaria Artesanal. Desenvolvido por Elias Costa Negret's. Todos os direitos reservados.</p>
             </div>
         </div>
     </footer>
